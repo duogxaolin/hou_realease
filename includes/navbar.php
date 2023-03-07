@@ -24,7 +24,7 @@
     
                     <nav class="classy-navbar justify-content-between" id="houNav">
     
-                        <a class="nav-brand" href="index.html"><img src="./assets/image/logo-dai-hoc-mo-ha-noi-inkythuatso-01.png" alt="">
+                        <a class="nav-brand" href="<?=$duogxaolin->home_url()?>"><img src="<?=$duogxaolin->site('logo',$domain)?>" style="height:50px" alt="">
                         </a>
     
                         <div class="classy-navbar-toggler">
@@ -53,7 +53,7 @@
                                     </li>
                                     <li><a href="#">Điểm</a>
                                         <ul class="dropdown">
-                                            <li><a href="check-point.html">- Xem điểm</a>
+                                            <li><a href="<?=$duogxaolin->home_url()?>/student/check-point">- Xem điểm</a>
                                             </li>
                                             <li><a href="test-exam.html">- Lịch sử</a>
                                             </li>
