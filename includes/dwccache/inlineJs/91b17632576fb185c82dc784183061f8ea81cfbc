@@ -1,0 +1,1 @@
+s:206:"<script type="text/javascript">$(document).ready(function(){var table=$('#datatable').DataTable({"responsive":false,"autoWidth":false,dom:'Bfrtip',buttons:['copy','csv','print','excel','pdf']});});</script>";
