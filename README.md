@@ -7,6 +7,7 @@
  b5: vào http://localhost/phpmyadmin/ tạo một database mới tên là hou và dán file hou.sql vào
  b6: tiến hành config tại file config.php đối với xampp thì giữ nguyên là có thể sử dụng
  ```php
+ 
  $connect = array(
     'hostname' => 'localhost',
     'username' => 'root',
@@ -14,3 +15,10 @@
     'database' => 'hou'
 );
 ```
+* Sau khi sửa xong tiến hành commit code như sau:
+```php
+git add .
+git commit -m "nội dung chỉnh sửa"
+git push
+```
+* mỗi lần tiến hành sửa code chạy lệnh : git pull để lấy data mới nhất
