@@ -1,0 +1,1 @@
+s:357:"<script type="text/javascript">$("#forgot").on("click",function(){$('#forgot').html('Xác nhận').prop('disabled',true);$.ajax({url:"https://localhost/hou_realease/ajaxs/forgot.php",method:"POST",data:{email:$("#email").val()},success:function(response){$("#thongbao").html(response);$('#forgot').html('Xác nhận').prop('disabled',false);}});});</script>";
