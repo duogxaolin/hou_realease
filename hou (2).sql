@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 07, 2023 lúc 10:49 AM
+-- Thời gian đã tạo: Th3 07, 2023 lúc 10:53 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -168,7 +168,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`) VALUES
-(1, '21a120100061', '19008198', '', 0, '2023-03-07 11:55:06', '21a120100061@students.hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', '', '::1', '', '', 'Nguyễn Thái Dương');
+(1, '21a120100061', '19008198', '', 0, '2023-03-07 11:55:06', '21a120100061@students.hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', '', '::1', '', '', 'Nguyễn Thái Dương'),
+(2, '21a120100049', '12345678', '', 0, NULL, '21a120100049@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Nguyễn Văn Dũng'),
+(3, '21a120100302', '12345678', '', 0, NULL, '21a120100302@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Trần Văn Tuấn');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -224,7 +226,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
