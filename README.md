@@ -22,3 +22,4 @@ git commit -m "nội dung chỉnh sửa"
 git push
 ```
 * mỗi lần tiến hành sửa code chạy lệnh : git pull để lấy data mới nhất
+7/3/2023

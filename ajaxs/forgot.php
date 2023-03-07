@@ -11,18 +11,29 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
     }
     if(check_email($email) != True) 
     {
-        msg_error2('Vui lòng nhập địa chỉ email hợp lệ');
+        $row = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `username` = '$email'");
+        if(!$row)
+        {
+            msg_error2('Địa chỉ email không tồn tại trong hệ thống');
+        }
+        $otp = random('0123456789qwertyuiopasdfghjklzxcvbnm', '32').time();
+        $duogxaolin->update("users", array(
+            'otp' => $otp
+        ), " `username` = '".$row['username']."'" );
+        $guitoi = $row['email'];   
+    }else{
+        $row = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `email` = '$email'");
+        if(!$row)
+        {
+            msg_error2('Địa chỉ email không tồn tại trong hệ thống');
+        }
+        $otp = random('0123456789qwertyuiopasdfghjklzxcvbnm', '32').time();
+        $duogxaolin->update("users", array(
+            'otp' => $otp
+        ), " `username` = '".$row['username']."'" );
+        $guitoi = $email;   
     }
-    $row = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `email` = '$email'");
-    if(!$row)
-    {
-        msg_error2('Địa chỉ email không tồn tại trong hệ thống');
-    }
-    $otp = random('0123456789qwertyuiopasdfghjklzxcvbnm', '32').time();
-    $duogxaolin->update("users", array(
-        'otp' => $otp
-    ), " `username` = '".$row['username']."'" );
-    $guitoi = $email;   
+
     $subject = 'XÁC NHẬN KHÔI PHỤC MẬT KHẨU';
     $bcc = $duogxaolin->site('tenweb',$domain);
     $hoten ='Client';
