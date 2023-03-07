@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 07, 2023 lúc 08:33 AM
+-- Thời gian đã tạo: Th3 07, 2023 lúc 10:49 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -88,6 +88,60 @@ INSERT INTO `options` (`id`, `tenweb`, `mota`, `tukhoa`, `logo`, `email`, `pass_
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `score`
+--
+
+CREATE TABLE `score` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `tinchi` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `name_subject` text NOT NULL,
+  `id_subject` varchar(250) NOT NULL,
+  `score1` float NOT NULL,
+  `score2` float NOT NULL,
+  `score3` float NOT NULL,
+  `mark` text NOT NULL,
+  `status` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `note` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Đang đổ dữ liệu cho bảng `score`
+--
+
+INSERT INTO `score` (`id`, `username`, `tinchi`, `amount`, `name_subject`, `id_subject`, `score1`, `score2`, `score3`, `mark`, `status`, `date`, `note`) VALUES
+(1, '21a120100061', 3, 1, 'Lập trình hướng đối tượng', 'LTHDT_DT', 10, 10, 9.8, 'A+', 1, '2023-03-07 10:10:12', 'Cần học ít hơn'),
+(2, '21a120100061', 3, 1, 'Đại số', 'DS_DT', 10, 9.5, 9.8, 'A+', 1, '2023-03-07 10:10:12', 'Cần học ít hơn!!'),
+(3, '21a120100061', 3, 1, 'Kỹ thuật điện', 'KTD_DT', 10, 9.5, 9.8, 'A+', 1, '2023-03-07 10:10:12', 'Cần học ít hơn!!');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `subject`
+--
+
+CREATE TABLE `subject` (
+  `id` int(11) NOT NULL,
+  `name_subject` text NOT NULL,
+  `id_subject` text NOT NULL,
+  `tinchi` int(11) NOT NULL,
+  `conditions` text NOT NULL,
+  `loai` int(11) NOT NULL,
+  `Knowledge_block` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Đang đổ dữ liệu cho bảng `subject`
+--
+
+INSERT INTO `subject` (`id`, `name_subject`, `id_subject`, `tinchi`, `conditions`, `loai`, `Knowledge_block`) VALUES
+(1, 'Tin học đại cương', 'THDK_DT', 3, '', 1, 'K1');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `users`
 --
 
@@ -114,7 +168,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`) VALUES
-(1, '21a120100061', '12345678', '', 0, '2023-03-07 11:55:06', '21a120100061@students.hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', '', '::1', '', '', 'Nguyễn Thái Dương');
+(1, '21a120100061', '19008198', '', 0, '2023-03-07 11:55:06', '21a120100061@students.hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', '', '::1', '', '', 'Nguyễn Thái Dương');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -124,6 +178,18 @@ INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdat
 -- Chỉ mục cho bảng `options`
 --
 ALTER TABLE `options`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Chỉ mục cho bảng `score`
+--
+ALTER TABLE `score`
+  ADD PRIMARY KEY (`id`) USING BTREE;
+
+--
+-- Chỉ mục cho bảng `subject`
+--
+ALTER TABLE `subject`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
@@ -141,6 +207,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `options`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `score`
+--
+ALTER TABLE `score`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

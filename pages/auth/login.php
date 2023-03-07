@@ -26,7 +26,7 @@ require_once('../../includes/header.php');
                         <div id="thongbao"></div>
                         <div class="input-field">
                             <input type="text" class="input" id="username" name="username" required autocomplete="off">
-                            <label for="email">Email</label>
+                            <label for="email">Email hoặc MSV</label>
                         </div>
 
                         <div class="input-field">

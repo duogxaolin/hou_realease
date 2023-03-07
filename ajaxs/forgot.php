@@ -129,7 +129,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
                                                         <table>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td style="color:#606060;font-family:Arial,sans-serif;font-size:14px;line-height:150%;text-align:left" width="100%">Liên Kết Cấp Lại Mật Khẩu: <strong>'.$duogxaolin->home_url().'/client/quen-mat-khau?username='.$row['username'].'&code='.$otp.'</strong></td>
+                                                                    <td style="color:#606060;font-family:Arial,sans-serif;font-size:14px;line-height:150%;text-align:left" width="100%">Liên Kết Cấp Lại Mật Khẩu: <strong>'.$duogxaolin->home_url().'/student/reset?username='.$row['username'].'&code='.$otp.'</strong></td>
                                                                     
                                                                 </tr>
                                                                 <tr>

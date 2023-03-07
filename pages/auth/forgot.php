@@ -48,7 +48,7 @@ require_once('../../includes/header.php');
     <script type="text/javascript">
 $("#forgot").on("click", function() {
 
-    $('#forgot').html('Xác nhận').prop('disabled',
+    $('#forgot').html('Đang Xử Lý').prop('disabled',
         true);
     $.ajax({
         url: "<?=$duogxaolin->home_url();?>/ajaxs/forgot.php",
