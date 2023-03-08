@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 07, 2023 lúc 10:53 AM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Mar 08, 2023 at 08:14 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `hou`
+-- Database: `hou`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `options`
+-- Table structure for table `options`
 --
 
 CREATE TABLE `options` (
@@ -79,7 +79,7 @@ CREATE TABLE `options` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Đang đổ dữ liệu cho bảng `options`
+-- Dumping data for table `options`
 --
 
 INSERT INTO `options` (`id`, `tenweb`, `mota`, `tukhoa`, `logo`, `email`, `pass_email`, `noidung_naptien`, `thongbao`, `anhbia`, `favicon`, `baotri`, `chinhsach`, `min_ruttien`, `phi_chuyentien`, `status_chuyentien`, `hotline`, `facebook`, `theme_color`, `modal_thongbao`, `status_muathe`, `status_napbank`, `status_demo`, `email_admin`, `phi_rut_tien`, `script_live_chat`, `status_blog`, `api_autocard`, `autock`, `chenhlech`, `chenhlech1`, `chenhlech2`, `bot`, `tele`, `idtele`, `bankttv`, `api_buy`, `api_bank`, `zing`, `poster`, `partner_id`, `wallet_number`, `partner_key`, `checklog`, `domainv3`, `domain`, `affiliate`, `token_rut`) VALUES
@@ -88,7 +88,7 @@ INSERT INTO `options` (`id`, `tenweb`, `mota`, `tukhoa`, `logo`, `email`, `pass_
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `score`
+-- Table structure for table `score`
 --
 
 CREATE TABLE `score` (
@@ -108,7 +108,7 @@ CREATE TABLE `score` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Đang đổ dữ liệu cho bảng `score`
+-- Dumping data for table `score`
 --
 
 INSERT INTO `score` (`id`, `username`, `tinchi`, `amount`, `name_subject`, `id_subject`, `score1`, `score2`, `score3`, `mark`, `status`, `date`, `note`) VALUES
@@ -119,7 +119,7 @@ INSERT INTO `score` (`id`, `username`, `tinchi`, `amount`, `name_subject`, `id_s
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `subject`
+-- Table structure for table `subject`
 --
 
 CREATE TABLE `subject` (
@@ -133,16 +133,80 @@ CREATE TABLE `subject` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Đang đổ dữ liệu cho bảng `subject`
+-- Dumping data for table `subject`
 --
 
 INSERT INTO `subject` (`id`, `name_subject`, `id_subject`, `tinchi`, `conditions`, `loai`, `Knowledge_block`) VALUES
-(1, 'Tin học đại cương', 'THDK_DT', 3, '', 1, 'K1');
+(1, 'Tin học đại cương', 'THDK_DT', 3, '', 1, 'K1'),
+(2, 'Giải tích 1\r\n', 'GT_1', 3, '', 1, 'K1'),
+(3, 'Vật lý 1\r\n', 'VL_1', 2, '', 1, 'K1'),
+(4, 'Tiếng Anh cơ bản 1', 'TACB1_DT', 3, '', 1, 'K1'),
+(5, 'Pháp luật đại cương', 'PLDK_DT', 2, '', 1, 'K1'),
+(6, 'Triết học Mác - Lênin\r\n', 'THM-LN_DT', 3, '', 1, 'K1'),
+(7, 'Đại số\r\n', 'DS-DT', 2, '', 1, 'K1'),
+(8, 'Giải tích 2\r\n', 'DT2-DT', 3, '', 1, 'K1'),
+(9, 'Vật lý 2\r\n', 'VL2-DT', 3, '', 1, 'K1'),
+(10, 'Tiếng Anh cơ bản 2\r\n', 'TACB2-DT', 3, '', 1, 'K1'),
+(11, 'Nhập môn ngành Điều khiển và Tự động hóa\r\n', 'DK-TDH', 2, '', 1, 'K5'),
+(12, 'Tín hiệu và điều chế\r\n', 'THVDC-DT', 2, '', 1, 'K4'),
+(13, 'Thực hành máy tính\r\n', 'THMT-DT', 2, '', 1, 'K7'),
+(14, 'Kinh tế chính trị Mác - Lênin\r\n', 'KTCTM-LN', 2, '', 1, 'K1'),
+(15, 'Xác suất thống kê\r\n', 'XSTK-DT', 2, '', 1, 'K1'),
+(16, 'Tiếng Anh cơ bản 3\r\n', 'TACB3-DT', 3, '', 1, 'K1'),
+(17, 'Vật liệu và linh kiện điện tử\r\n', 'VLLK-DT', 3, '', 1, 'K4'),
+(18, 'Ngôn ngữ lập trình - Cấu trúc dữ liệu\r\n', 'NNLT-CTDL', 3, '', 1, 'K4'),
+(19, 'Thực tập cơ bản\r\n', 'TTCB-DT', 2, '', 1, 'K7'),
+(20, 'Lý thuyết mạch điện 1\r\n', 'LTMD1-DT', 3, '', 1, 'K5'),
+(21, 'Chủ nghĩa xã hội khoa học\r\n', 'CNXHKH', 2, '', 1, 'K1'),
+(22, 'Kỹ thuật số và mạch logic\r\n', 'KTSVMLG-DT', 3, '', 1, 'K4'),
+(23, 'Kỹ thuật mạch\r\n', 'KTM', 3, '', 1, 'K4'),
+(24, 'Nguyên lý kinh tế\r\n', 'NLKT-DT', 2, '', 2, 'K3'),
+(25, 'Quản trị học\r\n', 'QTH-DT', 2, '', 2, 'K3'),
+(26, 'Lý thuyết mạch điện 2\r\n', 'LTMD2-DT', 2, '', 1, 'K5'),
+(27, 'Lý thuyết điều khiển 1\r\n', 'LTDK1-DT', 3, '', 1, 'K5'),
+(28, 'Tư tưởng Hồ Chí Minh\r\n', 'TTHCM-DT', 2, '', 1, 'K1'),
+(29, 'Kỹ thuật vi xử lý\r\n', 'KTVXL-DT', 3, '', 1, 'K4'),
+(30, 'Điện tử công suất\r\n', 'DTCS-DT', 3, '', 1, 'K6'),
+(31, 'Lịch sử Đảng Cộng sản Việt Nam\r\n', 'LSDCSVN', 2, '', 1, 'K1'),
+(32, 'Đồ án 1\r\n', 'DA1-DT', 2, '', 1, 'K6'),
+(33, 'Đo lường điện tử\r\n', 'DLDT-DT', 3, '', 1, 'K4'),
+(34, 'Máy điện và khí cụ điện\r\n', 'MDVKCD-DT', 3, '', 1, 'K5'),
+(35, 'Điều khiển logic\r\n', 'LOGIC-DT', 3, '', 1, 'K6'),
+(36, 'Lý thuyết điều khiển 2\r\n', 'LTDK2-DT', 2, '', 2, 'K6'),
+(37, 'Hệ thống điều khiển số\r\n', 'HTDKS-DT', 2, '', 2, 'K6'),
+(38, 'Trang bị điện\r\n', 'TBD-DT', 2, '', 2, 'K6'),
+(39, 'Điều khiển máy điện\r\n', 'DKMD-DT', 2, '', 2, 'K6'),
+(40, 'Thiết kế thiết bị đo\r\n', 'TKTBD-DT', 2, '', 2, 'K6'),
+(41, 'Mạng cảm biến\r\n', 'MCB-DT', 2, '', 2, 'K6'),
+(42, 'Trí tuệ nhân tạo\r\n', 'TTNT-DT', 2, '', 2, 'K6'),
+(43, 'Hệ thống nhúng\r\n', 'HTN-DT', 2, '', 2, 'K6'),
+(44, 'Đồ án 2\r\n', 'DA2-DT', 2, '', 1, 'K6'),
+(45, 'Thí nghiệm chuyên ngành Tự động hóa\r\n', 'TNCNTDH', 2, '', 1, 'K6'),
+(46, 'Hệ thống cung cấp điện\r\n', 'HTCCD-DT', 3, '', 1, 'K6'),
+(47, 'Lập trình PLC\r\n', 'PLC', 2, '', 1, 'K6'),
+(48, 'Truyền động điện\r\n', 'TDD', 3, '', 1, 'K6'),
+(49, 'Điều khiển quá trình\r\n', 'DKQT', 3, '', 1, 'K6'),
+(50, 'Matlab và ứng dụng\r\n', 'MATLAB', 2, '', 1, 'K5'),
+(51, 'Kỹ thuật phần mềm ứng dụng\r\n', 'KTPMUD-DT', 2, '', 1, 'K6'),
+(52, 'Thực hành mô phỏng mạch điện\r\n', 'THMPMD-DT', 2, '', 1, 'K7'),
+(53, 'Xử lý số tín hiệu\r\n', 'XLSTH-DT', 3, '', 1, 'K6'),
+(54, 'Vi điều khiển và ứng dụng\r\n', 'VDKVUD-DT', 3, '', 1, 'K6'),
+(55, 'Lập trình ứng dụng\r\n', 'LTUD-DT', 2, '', 1, 'K6'),
+(56, 'Kĩ thuật Robot\r\n', 'ROBOT-DT', 2, '', 1, 'K6'),
+(57, 'Hệ SCADA\r\n', 'SCADA-DT', 2, '', 1, 'K6'),
+(58, 'Điều khiển mờ và mạng nơron\r\n', 'NORON-DT', 3, '', 1, 'K6'),
+(59, 'BMS\r\n', 'BMS-DT', 2, '', 1, 'K6'),
+(60, 'Điều khiển hệ cơ điện tử\r\n', 'DKHCDT-DT', 2, '', 1, 'K6'),
+(61, 'Hệ thống năng lượng tái tạo\r\n', 'HTNLTT-DT', 2, '', 1, 'K6'),
+(62, 'Thiết kế thiết bị điều khiển\r\n', 'TKTBDK-DT', 2, '', 1, 'K6'),
+(63, 'Đồ án 3\r\n', 'DA3-DT', 2, '', 1, 'K6'),
+(64, 'Thực tập tốt nghiệp\r\n', 'TTTN-DT', 4, '', 1, 'K7'),
+(65, 'Đồ án tốt nghiệp kỹ sư\r\n', 'DATNKS-DT', 8, '', 1, 'K8');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -164,7 +228,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`) VALUES
@@ -173,57 +237,57 @@ INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdat
 (3, '21a120100302', '12345678', '', 0, NULL, '21a120100302@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Trần Văn Tuấn');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `options`
+-- Indexes for table `options`
 --
 ALTER TABLE `options`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Chỉ mục cho bảng `score`
+-- Indexes for table `score`
 --
 ALTER TABLE `score`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Chỉ mục cho bảng `subject`
+-- Indexes for table `subject`
 --
 ALTER TABLE `subject`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `options`
+-- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT cho bảng `score`
+-- AUTO_INCREMENT for table `score`
 --
 ALTER TABLE `score`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `subject`
+-- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
