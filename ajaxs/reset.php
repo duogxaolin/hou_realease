@@ -49,7 +49,7 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
         'password' => $password,
     ], " `username` = '".$username."' ");
 
-    msg_success2("Mật khẩu của bạn đã được thay đổi thành công !");
+    msg_success("Mật khẩu của bạn đã được thay đổi thành công !", $duogxaolin->home_url(), 1000);
 }else if ($_POST) {
     $data = [
         "Message" => 'The requested resource does not support http method POST'

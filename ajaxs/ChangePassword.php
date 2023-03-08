@@ -4,39 +4,47 @@
     require_once('../class/PHPMailerAutoload.php');
     require_once('../class/class.phpmailer.php');
 if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
-    $email = check_string($_POST['email']);
-    if(empty($email))
+    $password = check_string($_POST['password']);
+    $newpassword = check_string($_POST['newpassword']);
+    $renewpassword = check_string($_POST['renewpassword']);
+    if(empty($password))
     {
-        msg_error2("Vui lòng nhập địa chỉ email vào ô trống");
+        admin_msg_error2("Bạn chưa nhập Mật Khẩu Cũ ");
     }
-    if(check_email($email) != True) 
+    if(empty($newpassword))
     {
-        $row = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `username` = '$email'");
-        if(!$row)
-        {
-            msg_error2('Địa chỉ email không tồn tại trong hệ thống');
-        }
-        $otp = random('0123456789qwertyuiopasdfghjklzxcvbnm', '32').time();
-        $duogxaolin->update("users", array(
-            'otp' => $otp
-        ), " `username` = '".$row['username']."'" );
-        $guitoi = $row['email'];   
-    }else{
-        $row = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `email` = '$email'");
-        if(!$row)
-        {
-            msg_error2('Địa chỉ email không tồn tại trong hệ thống');
-        }
-        $otp = random('0123456789qwertyuiopasdfghjklzxcvbnm', '32').time();
-        $duogxaolin->update("users", array(
-            'otp' => $otp
-        ), " `username` = '".$row['username']."'" );
-        $guitoi = $email;   
+        admin_msg_error2("Bạn chưa nhập mật khẩu mới");
     }
-
-    $subject = 'XÁC NHẬN KHÔI PHỤC MẬT KHẨU';
-    $bcc = 'DUOGXAOLIN.DEV';;
-    $hoten ='Client';
+    if(empty($renewpassword))
+    {
+        admin_msg_error2("Bạn chưa nhập lại mật khẩu mới");
+    }
+    $row2 = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `username` = '".$auth['username']."' ");
+    if(!$row2)
+    {
+        admin_msg_error2("Tài khoản không tồn tại trong hệ thống");
+    }
+    if($row2['password'] != $password){
+        admin_msg_error2("Mật Khẩu Cũ Không Đúng");
+    }
+    if($newpassword == $password){
+        admin_msg_error2("Mật Khẩu Không Được Trùng Với Mật Khẩu Cũ");
+    }
+    if($newpassword != $renewpassword){
+        admin_msg_error2("Mật Khẩu Nhập Lại Không Khớp");
+    }
+    
+    if(strlen($newpassword) < 5)
+    {
+        admin_msg_error2('Vui lòng nhập mật khẩu có ích nhất 5 ký tự');
+    }
+    $duogxaolin->update("users", [
+        'otp' => 'NULL',
+        'password' => $newpassword,
+    ], " `username` = '".$auth['username']."' ");
+    $guitoi = $auth['email'];   
+    $subject = 'CẢNH BÁO ĐỔI MẬT KHẨU';
+    $bcc = 'DUOGXAOLIN.DEV';
     $noi_dung = '<div style="Margin:0;box-sizing:border-box;color:#0a0a0a;font-family:Roboto,sans-serif;font-size:16px;font-weight:400;line-height:1.3;margin:0;min-width:100%;padding:0;text-align:left;width:100%!important">
     <span style="color:#fff;display:none!important;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden"></span>
     <table class="m_-8878546904072771419body" style="Margin:0;background-color:#f6f7f8;border-collapse:collapse;border-color:transparent;border-spacing:0;color:#0a0a0a;font-family:Roboto,sans-serif;font-size:16px;font-weight:400;height:100%;line-height:1.3;margin:0;padding:0;text-align:left;vertical-align:top;width:100%">
@@ -123,23 +131,20 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
                                                         </table>
                                                         
                                                         
-                                                        <p><strong>Xin chào : </strong> '.$row['fullname'].' </p>
+                                                        <p><strong>Xin chào : </strong> '.$auth['fullname'].' </p>
                                                         
-                                                        <p><strong style="color:#0fa54a">Yêu Cầu Cấp Lại Mật Khẩu </strong></p>
+                                                        <p><strong style="color:#0fa54a">Tài Khoản Của Bạn Vừa Tiến Hành Đổi Mật Khẩu Tại IP: '.myip().' </strong></p>
                                                         <table>
                                                             <tbody>
+                                                        
                                                                 <tr>
-                                                                    <td style="color:#606060;font-family:Arial,sans-serif;font-size:14px;line-height:150%;text-align:left" width="100%">Liên Kết Cấp Lại Mật Khẩu: <strong>'.$duogxaolin->home_url().'/student/reset?username='.$row['username'].'&code='.$otp.'</strong></td>
-                                                                    
-                                                                </tr>
-                                                                <tr>
-                                                                    <td style="color:#606060;font-family:Arial,sans-serif;font-size:14px;line-height:150%;text-align:left" width="100%">Ngày tạo:'.date("H:i d-m-Y").'</td>
+                                                                    <td style="color:#606060;font-family:Arial,sans-serif;font-size:14px;line-height:150%;text-align:left" width="100%">Ngày:'.date("H:i d-m-Y").'</td>
                                                                     
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                         
-                                                        <p>Để đăng nhập vào hệ thống quản lý đào tạo, vui lòng xác nhận thay đổi mật khẩu.</p>
+                                                        <p>Nếu không phải bạn thực hiện vui lòng liên hệ với cán bộ nhà trường để có biện pháp xử lý.</p>
                                   
                                                         
                                                         <p>&nbsp;</p>
@@ -223,7 +228,8 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
     </div>
 </div>';
     sendCSM($guitoi, $hoten, $subject, $noi_dung, $bcc,$domain);   
-    msg_success('Chúng tôi đã gửi mã xác minh vào địa chỉ Email của bạn, vui lòng thao tác theo hướng dẫn trong email !', '/', 4000);
+
+    admin_msg_success("Mật khẩu của bạn đã được thay đổi thành công !", $duogxaolin->home_url(),1500);
 }else if ($_POST) {
     $data = [
         "Message" => 'The requested resource does not support http method POST'
@@ -235,3 +241,4 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
     ];
     die(json_encode($data, JSON_PRETTY_PRINT));
 }
+?>
