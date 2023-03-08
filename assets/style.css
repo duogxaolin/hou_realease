@@ -407,7 +407,7 @@ i{
     color: #00aeef; 
 }
 
-.hou-btn.change-pw-btn {
+.hou-btn.profile-btn {
     color: #ffffff !important;
     font-weight: 600;
     min-width: 140px;
@@ -416,7 +416,7 @@ i{
     font-size: 12px; 
 }
 
-.hou-btn.change-pw-btn:focus, .hou-btn.change-pw-btn:hover {
+.hou-btn.profile-btn:focus, .hou-btn.profile-btn:hover {
     font-size: 12px;
     font-weight: 600;
     background-color: #ffffff;
