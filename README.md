@@ -22,4 +22,12 @@ git commit -m "nội dung chỉnh sửa"
 git push
 ```
 * mỗi lần tiến hành sửa code chạy lệnh : git pull để lấy data mới nhất
-7/3/2023
+# 8/3/2023
+- thêm sql 
+  + table class: lớp học (K24-DT3....)
+  + table course:khóa học ( khóa k24 k23....)
+  + open_class  : lớp môn đang được mở trong kỳ
+  + semester : học kỳ (Kỳ 1 - 2023......)
+  + score    : danh sách điểm
+
+- thêm chức năng đổi mật khẩu

@@ -65,7 +65,7 @@
                                     <li><a href="./contact.html">Liên hệ</a>
                                     </li>
                                 </li>
-                                <li><a href="change-pw.html">Đổi mật khẩu</a>
+                                <li><a data-toggle="modal" data-target="#ChangePassword">Đổi mật khẩu</a>
                                 </li>
                                 </ul>
                             </div>

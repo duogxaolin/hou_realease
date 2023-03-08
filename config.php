@@ -428,10 +428,18 @@ function admin_msg_error($text, $url, $time)
     return die('<script type="text/javascript">Swal.fire("Thất Bại", "'.$text.'","error");
     setTimeout(function(){ location.href = "'.$url.'" },'.$time.');</script>');
 }
+function admin_msg_error2($text)
+{
+    return die('<script type="text/javascript">Swal.fire("Thất Bại", "'.$text.'","error");</script>');
+}
 function admin_msg_warning($text, $url, $time)
 {
     return die('<script type="text/javascript">Swal.fire("Thông Báo", "'.$text.'","warning");
     setTimeout(function(){ location.href = "'.$url.'" },'.$time.');</script>');
+}
+function admin_msg_warning2($text)
+{
+    return die('<script type="text/javascript">Swal.fire("Thông Báo", "'.$text.'","warning");</script>');
 }
 function XoaDauCach($text)
 {
