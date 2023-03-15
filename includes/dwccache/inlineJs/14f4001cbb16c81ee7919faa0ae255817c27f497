@@ -1,0 +1,1 @@
+s:284:"<script type="text/javascript">var today=new Date();var date=today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();var time=today.getHours()+":"+today.getMinutes()+":"+today.getSeconds();var dateTime=date+' '+time;document.getElementById("hvn").innerHTML=dateTime;</script>";

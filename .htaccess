@@ -14,5 +14,6 @@ RewriteRule ^login$ pages/auth/login.php [L]
 RewriteRule ^logout$ pages/auth/logout.php [L]
 RewriteRule ^forgot-password$ pages/auth/forgot.php [L]
 RewriteRule ^student/check-point$ pages/student/check-point.php [L]
+RewriteRule ^student/profile$ pages/student/profile.php [L]
 RewriteRule ^student/reset$ pages/auth/reset.php [L]
 

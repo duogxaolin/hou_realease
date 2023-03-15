@@ -7,8 +7,6 @@ if(empty($_SESSION['username'])) {
 require_once('../../includes/header.php');
 require_once('../../includes/navbar.php');
 ?>
-<br>
-<br>
 <section class="col-lg-12 connectedSortable">
                 <div class="card card-primary card-outline">
                     <div class="card-header">

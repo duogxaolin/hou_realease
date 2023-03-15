@@ -58,23 +58,49 @@
                                             <li><a href="test-exam.html">- Lịch sử</a>
                                             </li>
                                         </ul>
+                                        </li>
                                     <li><a href="survay.html">Khảo sát</a>
                                     </li>
                                     <li><a href="pee.html">Học phí</a>
                                     </li>
                                     <li><a href="./contact.html">Liên hệ</a>
                                     </li>
-                                </li>
-                                <li><a data-toggle="modal" data-target="#ChangePassword">Đổi mật khẩu</a>
-                                </li>
+                                    <li><a href="<?=$duogxaolin->home_url()?>/logout">Đăng xuất</a> </li>
+                                    <li><a href="#" class="btn hou-btn change-pw-btn"><i class="fa fa-user" aria-hidden="true"></i> <?=$auth['fullname']?></a>
+                                        <ul class="dropdown">
+                                            <li><a href="<?=$duogxaolin->home_url()?>/student/profile">Thông tin tài khoản</a>
+                                            </li>
+                                            <li><a data-toggle="modal" data-target="#ChangePassword">Đổi mật khẩu</a> </li>
+                                            <li><a href="<?=$duogxaolin->home_url()?>/logout">Đăng xuất</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                              
+                               
+                               
                                 </ul>
                             </div>
     
                         </div>
-    
-                        <a href="<?=$duogxaolin->home_url()?>/logout" class="btn hou-btn change-pw-btn">Đăng Xuất</a>
+                     
                     </nav>
                 </div>
             </div>
         </div>
     </header>
+    <br>
+    <br>
+    <subheader>
+            <div class="sb-header">
+                <div class="container">
+                    <div class="sub-main">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">Học phí</li>
+                                <li class="breadcrumb-item"><a href=""><i class="fa fa-home"></i></a></li>
+                            </ol>
+                          </nav>
+                    </div>
+                </div>
+            </div>
+        </subheader>
