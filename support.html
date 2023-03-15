@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+            <nav class="navbar navbar-light bg-light">
+                <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </nav>
+            <br>
+        <div class="row">
+            <div class="col-2">
+                <h4>Danh Mục</h4>
+                <ul class="list-group">
+                    <li class="list-group-item btn btn-outline-primary ">DCVS</li>
+                    <li class="list-group-item btn btn-outline-primary">khảo thí</li>
+                    <li class="list-group-item btn btn-outline-primary">Đào tạo</li>
+                    <li class="list-group-item btn btn-outline-primary">Hành chính</li>
+                    <li class="list-group-item btn btn-outline-primary">CTSV</li>
+                    <li class="list-group-item btn btn-outline-primary">QHDN</li>
+                    <li class="list-group-item btn btn-outline-primary">SV mới nhập học</li>
+                  </ul>
+            </div>
+
+            <div class="col-10">
+                <h4>Câu hỏi thường gặp</h4>
+                <div id="accordion">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Sinh viên muốn xin chuyển ngành?
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                           <p>1.Không đang là sinh viên trình độ năm thứ nhất hoặc năm cuối khóa, không thuộc diện bị xem xét buộc thôi học và còn đủ thời gian học tập theo quy định. (Thời gian tối đa để sinh viên hoàn thành khoá học được quy định trong quy chế của cơ sở đào tạo, nhưng không vượt quá 2 lần thời gian theo kế hoạch học tập chuẩn được quy định chung đối với toàn khoá học);</p> 
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Thủ tục xin bảo lưu học tập?
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                        <p>Thông thường, để xin nghỉ học tạm thời vầ bảo lưu kết quả học tập, sinh viên phải chuẩn bị hồ sơ gồm:
+                            <br>
+                            - Đơn xin nghỉ học tạm thời;
+                        </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Khi nào sinh viên buộc thôi học
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <p>Sinh viên bị buộc thôi học trong các trường hợp sau: - Điểm trung bình năm học đạt dưới 0,8; - Điểm trung bình tích lũy đạt dưới 1,2 sau 2 năm học, dưới 1,4 sau 3 năm học và dưới 1,6 từ sau 4 năm học trở đi; - Thời gian học tập vượt quá giới hạn theo quy định tại khoản 5 Điều 2 của Quy chế này</p>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                           Khi nào sinh viên được học song ngành
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseFour" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <p>Sinh viên bị buộc thôi học trong các trường hợp sau: - Điểm trung bình năm học đạt dưới 0,8; - Điểm trung bình tích lũy đạt dưới 1,2 sau 2 năm học, dưới 1,4 sau 3 năm học và dưới 1,6 từ sau 4 năm học trở đi; - Thời gian học tập vượt quá giới hạn theo quy định tại khoản 5 Điều 2 của Quy chế này</p>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                           khi nào sinh viên đóng học phí
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseFive" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <p>Sinh viên bị buộc thôi học trong các trường hợp sau: - Điểm trung bình năm học đạt dưới 0,8; - Điểm trung bình tích lũy đạt dưới 1,2 sau 2 năm học, dưới 1,4 sau 3 năm học và dưới 1,6 từ sau 4 năm học trở đi; - Thời gian học tập vượt quá giới hạn theo quy định tại khoản 5 Điều 2 của Quy chế này</p>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                           Phụ huynh cần làm gì để xem điểm sinh viên
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseSix" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <p>Sinh viên bị buộc thôi học trong các trường hợp sau: - Điểm trung bình năm học đạt dưới 0,8; - Điểm trung bình tích lũy đạt dưới 1,2 sau 2 năm học, dưới 1,4 sau 3 năm học và dưới 1,6 từ sau 4 năm học trở đi; - Thời gian học tập vượt quá giới hạn theo quy định tại khoản 5 Điều 2 của Quy chế này</p>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Sinh viên mất thẻ sinh viên cần làm gì
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseSeven" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <p>Sinh viên bị buộc thôi học trong các trường hợp sau: - Điểm trung bình năm học đạt dưới 0,8; - Điểm trung bình tích lũy đạt dưới 1,2 sau 2 năm học, dưới 1,4 sau 3 năm học và dưới 1,6 từ sau 4 năm học trở đi; - Thời gian học tập vượt quá giới hạn theo quy định tại khoản 5 Điều 2 của Quy chế này</p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
