@@ -509,7 +509,7 @@ function check_email($data)
 }
 function check_phone($data)
 {
-    if (preg_match('/^\+?(\d.*){3,}$/', $data, $matches))
+    if (preg_match('/^[0-9]{10}+$/', $data, $matches))
     {
         return True;
     }
