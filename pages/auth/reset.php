@@ -25,7 +25,7 @@
         die("<script type='text/javascript'>alert('Lệnh Không Tồn Tại!');;setTimeout(function(){ location.href = '/' },1000);</script>");
     }
 }
-        require_once("../../includes/header.php");
+        require_once("../../includes/head.php");
         ?>
 
 <body>
@@ -93,5 +93,5 @@ $("#reset").on("click", function () {
 })
 </script>
 <?php 
-require_once('../../includes/footer.php');
+require_once('../../includes/foot.php');
 ?>

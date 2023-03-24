@@ -329,6 +329,11 @@ function check_string($data)
     return trim(htmlspecialchars(addslashes($data)));
     //return str_replace(array('<',"'",'>','?','/',"\\",'--','eval(','<php'),array('','','','','','','','',''),htmlspecialchars(addslashes(strip_tags($data))));
 }
+function score($s1,$s2,$s3)
+{
+    return ($s1 + ($s2 *2) + ($s3 * 7)) / 10;
+    //return str_replace(array('<',"'",'>','?','/',"\\",'--','eval(','<php'),array('','','','','','','','',''),htmlspecialchars(addslashes(strip_tags($data))));
+}
 function format_cash($price)
 {
     return str_replace(",", ".", number_format($price));

@@ -3,40 +3,59 @@
     require_once('../class/class.smtp.php');
     require_once('../class/PHPMailerAutoload.php');
     require_once('../class/class.phpmailer.php');
-if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+    if ($_REQUEST) {
+        $return = array(
+            'error' => 0
+        );
     $password = check_string($_POST['password']);
     $newpassword = check_string($_POST['newpassword']);
     $renewpassword = check_string($_POST['renewpassword']);
     if(empty($password))
     {
-        admin_msg_error2("Bạn chưa nhập Mật Khẩu Cũ ");
+        $return['error'] = 1;
+        $return['msg']   = 'Bạn chưa nhập Mật Khẩu Cũ ';
+        die(json_encode($return));
     }
     if(empty($newpassword))
     {
-        admin_msg_error2("Bạn chưa nhập mật khẩu mới");
+        $return['error'] = 1;
+        $return['msg']   = 'Bạn chưa nhập mật khẩu mới';
+        die(json_encode($return));
     }
     if(empty($renewpassword))
     {
-        admin_msg_error2("Bạn chưa nhập lại mật khẩu mới");
+        $return['error'] = 1;
+        $return['msg']   = 'Bạn chưa nhập lại mật khẩu mới';
+        die(json_encode($return));
     }
     $row2 = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `username` = '".$auth['username']."' ");
     if(!$row2)
     {
-        admin_msg_error2("Tài khoản không tồn tại trong hệ thống");
+        $return['error'] = 1;
+        $return['msg']   = 'Tài khoản không tồn tại trong hệ thống';
+        die(json_encode($return));
     }
     if($row2['password'] != $password){
-        admin_msg_error2("Mật Khẩu Cũ Không Đúng");
+        $return['error'] = 1;
+        $return['msg']   = 'Mật Khẩu Cũ Không Đúng';
+        die(json_encode($return));
     }
     if($newpassword == $password){
-        admin_msg_error2("Mật Khẩu Không Được Trùng Với Mật Khẩu Cũ");
+        $return['error'] = 1;
+        $return['msg']   = 'Mật Khẩu Không Được Trùng Với Mật Khẩu Cũ';
+        die(json_encode($return));
     }
     if($newpassword != $renewpassword){
-        admin_msg_error2("Mật Khẩu Nhập Lại Không Khớp");
+        $return['error'] = 1;
+        $return['msg']   = 'Mật Khẩu Nhập Lại Không Khớp';
+        die(json_encode($return));
     }
     
     if(strlen($newpassword) < 5)
     {
-        admin_msg_error2('Vui lòng nhập mật khẩu có ích nhất 5 ký tự');
+        $return['error'] = 1;
+        $return['msg']   = 'Vui lòng nhập mật khẩu có ích nhất 5 ký tự';
+        die(json_encode($return));
     }
     $duogxaolin->update("users", [
         'otp' => 'NULL',
@@ -227,18 +246,8 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
     <div class="adL">
     </div>
 </div>';
-    sendCSM($guitoi, $hoten, $subject, $noi_dung, $bcc,$domain);   
-
-    admin_msg_success("Mật khẩu của bạn đã được thay đổi thành công !", $duogxaolin->home_url(),1500);
-}else if ($_POST) {
-    $data = [
-        "Message" => 'The requested resource does not support http method POST'
-    ];
-    die(json_encode($data, JSON_PRETTY_PRINT));
-} else {
-    $data = [
-        "Message" => 'The requested resource does not support http method GET'
-    ];
-    die(json_encode($data, JSON_PRETTY_PRINT));
+    sendCSM($guitoi, $hoten, $subject, $noi_dung, $bcc,$domain);  
+    $return['msg']        = 'Mật khẩu của bạn đã được thay đổi thành công !';
+    die(json_encode($return));
 }
 ?>

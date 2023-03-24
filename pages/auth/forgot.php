@@ -4,7 +4,7 @@ $title = "Quên Mật Khẩu - TMAS Điện Tử";
 if(isset($_SESSION['username'])) {
     header("Location: ".$duogxaolin->home_url()."/home");
 }
-require_once('../../includes/header.php');
+require_once('../../includes/head.php');
 ?>
 
 <body>
@@ -66,5 +66,5 @@ $("#forgot").on("click", function() {
 });
 </script>
     <?php
-    require_once('../../includes/footer.php');
+    require_once('../../includes/foot.php');
     ?>

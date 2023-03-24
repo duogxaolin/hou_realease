@@ -1,14 +1,37 @@
-<?php require_once(__DIR__."/minify.php");?>
-<!DOCTYPE HTML>
-<html>
+<?php //require_once(__DIR__."/minify.php");?>
+ <!--
+//////////////////////////////////////////////////////////////////////
+//  Thế gian không nợ ta điều gì, nhân quả báo ứng không chừa một ai//
+//                          _ooOoo_                               ////
+//                         o8888888o                              ////
+//                         88" . "88                              ////
+//                         (| ^_^ |)                              ////
+//                         O\  =  /O                              ////
+//                      ____/`---'\____                           ////
+//                    .'  \\|     |//  `.                         ////
+//                   /  \\|||  :  |||//  \                        ////
+//                  /  _||||| -:- |||||-  \                       ////
+//                  |   | \\\  -  /// |   |                       ////
+//                  | \_|  ''\---/''  |   |                       ////
+//                  \  .-\__  `-`  ___/-. /                       ////
+//                ___`. .'  /--.--\  `. . ___                     ////
+//              ."" '<  `.___\_<|>_/___.'  >'"".                  ////
+//            | | :  `- \`.;`\ _ /`;.`/ - ` : | |                 ////
+//            \  \ `-.   \_ __\ /__ _/   .-` /  /                 ////
+//      ========`-.____`-.___\_____/___.-`____.-'========         ////
+//                           `=---='                              ////
+//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ////
+//               Phật pháp từ bi, quay đầu là bờ                  ////
+//          Mong đức phật phụ hồ code con không bugs              ////
+/////////////////////////////////////////////////////////////////////-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="csrf-token" content="XPSBncXdQ72OEr4Ha0gRvU4EGDt1qRzq1KpcFPux">
-                <meta http-equiv="content-language" content="vi">
-<meta name="robots" content="index, follow'">
-<title><?=$title;?></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+  <meta name="author" content="DuogXaoLin">
+  <title><?=$title;?></title>
     <meta name="description" content="<?=$duogxaolin->site('mota',$domain);?>">
     <meta name="keywords" content="<?=$duogxaolin->site('tukhoa',$domain);?>">
     <!-- Open Graph data -->
@@ -28,33 +51,48 @@
     <meta name="twitter:creator" content="@wmt24h">
     <meta name="twitter:image:src" content="<?=$duogxaolin->site('anhbia',$domain);?>">
     <link rel="shortcut icon" href="<?=$duogxaolin->site('favicon',$domain);?>">
-    <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/assets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-      <!-- Font Awesome -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqvmap/1.5.1/jqvmap.min.css">
+    
 
-       <!-- DataTables -->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs4/2.4.0/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+  <!-- Favicon -->
+  <link rel="icon" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/img/brand/favicon.png" type="image/png">
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+  <!-- Icons -->
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+        type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/quill/dist/quill.core.css" type="text/css">
+    <script src="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/quill/dist/quill.min.js"></script>
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/nucleo/css/nucleo.css" type="text/css">
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+  <!-- Page plugins -->
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/sweetalert2/dist/sweetalert2.min.css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/css/dashboard.css" type="text/css">
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/glightbox/css/glightbox.css" type="text/css">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.5/css/buttons.dataTables.min.css">
-<!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title><?=$title?></title>
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
 </head>
+    <style>
+        .async-hide {
+            opacity: 0 !important
+        }
+    </style>
+
+</head>
+
+<body>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
