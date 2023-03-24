@@ -1,16 +1,13 @@
 <?php 
-require_once('config.php');
-$title = "TMAS Điện Tử - Trang chủ";
+require_once('../../config.php');
+$title = "Xem Điểm - TMAS Điện Tử";
 if(empty($_SESSION['username'])) {
     header("Location: ".$duogxaolin->home_url()."/login");
 }
-if ($auth['banned'] == '1') {
-  die("<script type='text/javascript'>alert('Á à chưa đóng học phí mà đòi dùng á? đi đóng r nói chuyện tiếp');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/student/peee' },1000);</script>");
-}
-require_once('includes/header.php');
-require_once('includes/navbar.php');
+require_once('../../includes/header.php');
+require_once('../../includes/navbar.php');
 ?>
-    <div class="header bg-primary pb-6">
+   <div class="header bg-primary pb-6">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
@@ -125,7 +122,13 @@ require_once('includes/navbar.php');
             <div class="media-body">
                 <div class="media-comment-text">
                     <h6 class="h5 mt-0">Phòng đào tạo</h6>
-                    <p class="text-sm lh-160">Cras sit amet nibh libero nulla vel metus scelerisque ante sollicitudin. Cras purus odio vestibulum in vulputate viverra turpis.</p>
+                    <p class="text-sm lh-160">Bạn còn nợ số tiền:<strong style="color:red">7.000.000đ</strong>
+                <br>
+                Vui lòng đóng học phí để tiếp tục sử dụng dịch vụ
+                </p>
+                <strong>STK:12345678</strong>
+                <strong>Ngân hàng: ABC</strong>
+
                  
                 </div>
             </div>
@@ -175,4 +178,4 @@ require_once('includes/navbar.php');
           </div>
         </div>
       </div>
-<?php require_once('includes/footer.php')  ?>
+<?php require_once('../../includes/footer.php')  ?>

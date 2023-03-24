@@ -151,13 +151,19 @@ require_once('../../includes/navbar.php');
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-country">Khóa</label>
-                                        <input type="number" id="input-postal-code" class="form-control" value="<?=$auth['course']?>" /disabled>
+                                        <input type="text" id="input-postal-code" class="form-control" value="<?=$auth['course']?>" /disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="input-country">Lớp</label>
-                                        <input type="number" id="input-postal-code" class="form-control" value="<?=$auth['class']?>" /disabled>
+                                        <input type="text" id="input-postal-code" class="form-control" value="<?=$auth['class']?>" /disabled>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="input-country">Ngày nhập học</label>
+                                        <input type="date" id="input-postal-code" class="form-control" value="<?=$auth['createdate']?>" /disabled>
                                     </div>
                                 </div>
                             </div>

@@ -27,6 +27,25 @@
                 <span class="nav-link-text">Trang chủ</span>
               </a>
             </li>
+            <?php if($auth['level'] == 'leader'){ ?>
+            <li class="nav-item">
+              <a class="nav-link" href="#navbar-leader" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-leader">
+              <i class="ni ni-map-big text-danger"></i>
+                <span class="nav-link-text">Quản Lý Lớp</span>
+              </a>
+              <div class="collapse" id="navbar-leader">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a href="<?=$duogxaolin->home_url()?>/leader/list/<?=$auth['course']?>/<?=$auth['class']?>" class="nav-link">
+                      <span class="sidenav-mini-icon"> D </span>
+                      <span class="sidenav-normal"> Danh sách lớp </span>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </li>
+            <?php } ?>
             <li class="nav-item">
               <a class="nav-link" href="<?=$duogxaolin->home_url()?>/student/profile">
               <i class="ni ni-single-02"></i>

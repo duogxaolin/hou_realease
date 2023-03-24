@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 24, 2023 lúc 02:31 PM
+-- Thời gian đã tạo: Th3 24, 2023 lúc 03:53 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -36,6 +36,13 @@ CREATE TABLE `class` (
   `course` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
+--
+-- Đang đổ dữ liệu cho bảng `class`
+--
+
+INSERT INTO `class` (`id`, `name`, `class_id`, `start`, `end`, `course`) VALUES
+(1, 'K24-DT3', 'DT3', '2021', '2025', 'K24');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +56,13 @@ CREATE TABLE `course` (
   `start` text NOT NULL,
   `end` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Đang đổ dữ liệu cho bảng `course`
+--
+
+INSERT INTO `course` (`id`, `name`, `course_id`, `start`, `end`) VALUES
+(1, 'K24', 'K24', '2021', '2025');
 
 -- --------------------------------------------------------
 
@@ -275,7 +289,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `level` varchar(255) NOT NULL,
   `banned` int(11) NOT NULL DEFAULT 0,
-  `createdate` datetime DEFAULT NULL,
+  `createdate` date DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `reason_banned` text DEFAULT NULL,
   `agent_id` text DEFAULT NULL,
@@ -296,7 +310,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`, `course`, `class`, `birth`, `sex`) VALUES
-(1, '21a120100061', '123456789', '', 0, '2023-03-07 11:55:06', '21a120100061@students.hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', '', '::1', '', '0354186573', 'Nguyễn Thái Dương', 'K24', 'DT3', '2003-09-30', 'Nam'),
+(1, '21a120100061', '123456789', 'leader', 0, '2023-03-07', '21a120100061@students.hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', '', '::1', '', '0354186573', 'Nguyễn Thái Dương', 'K24', 'DT3', '2003-09-30', 'Nam'),
 (2, '21a120100049', '12345678', '', 0, NULL, '21a120100049@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Nguyễn Văn Dũng', '', '', '0000-00-00', ''),
 (3, '21a120100302', '12345678', '', 0, NULL, '21a120100302@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Trần Văn Tuấn', '', '', '0000-00-00', '');
 
@@ -361,13 +375,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `class`
 --
 ALTER TABLE `class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT cho bảng `open_class`

@@ -18,4 +18,9 @@ RewriteRule ^student/check-point/pass$ pages/student/point_pass.php [L]
 RewriteRule ^student/check-point/nonpass$ pages/student/point_nonpass.php [L]
 RewriteRule ^student/profile$ pages/student/profile.php [L]
 RewriteRule ^student/reset$ pages/auth/reset.php [L]
+RewriteRule ^student/peee$ pages/student/pee.php [L]
+
+
+RewriteRule ^leader/list/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$ pages/leader/list.php?course=$1&class=$2 [L]
+RewriteRule ^leader/view/([A-Za-z0-9-]+)$ pages/leader/view.php?usn=$1 [L]
 

@@ -1,4 +1,3 @@
-<?php //require_once(__DIR__."/minify.php");?>
  <!--
 //////////////////////////////////////////////////////////////////////
 //  Thế gian không nợ ta điều gì, nhân quả báo ứng không chừa một ai//
@@ -24,6 +23,8 @@
 //               Phật pháp từ bi, quay đầu là bờ                  ////
 //          Mong đức phật phụ hồ code con không bugs              ////
 /////////////////////////////////////////////////////////////////////-->
+<?php require_once(__DIR__."/minify.php");?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,8 +52,6 @@
     <meta name="twitter:creator" content="@wmt24h">
     <meta name="twitter:image:src" content="<?=$duogxaolin->site('anhbia',$domain);?>">
     <link rel="shortcut icon" href="<?=$duogxaolin->site('favicon',$domain);?>">
-    
-
   <!-- Favicon -->
   <link rel="icon" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/img/brand/favicon.png" type="image/png">
   <!-- Fonts -->
@@ -75,11 +74,6 @@
   <!-- Argon CSS -->
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/css/dashboard.css" type="text/css">
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/glightbox/css/glightbox.css" type="text/css">
-
-  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
 <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
