@@ -60,7 +60,6 @@
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/nucleo/css/nucleo.css" type="text/css">
     <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
         type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
     <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css">
@@ -72,7 +71,7 @@
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/fullcalendar/dist/fullcalendar.min.css">
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/sweetalert2/dist/sweetalert2.min.css">
   <!-- Argon CSS -->
-  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/css/dashboard.css" type="text/css">
+  <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/css/dashboards.css" type="text/css">
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/glightbox/css/glightbox.css" type="text/css">
   <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="<?=$duogxaolin->home_url()?>/src/dashboard/assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
@@ -83,7 +82,11 @@
             opacity: 0 !important
         }
     </style>
-
+<style>
+         :root {
+            --primary-color: #0a48b3!important;
+        }
+    </style>
 </head>
 
 <body>
