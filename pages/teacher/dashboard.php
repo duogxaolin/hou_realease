@@ -1,11 +1,9 @@
-<?php 
-require_once('../../config.php');
-$title = "Bảng điểm - ".$rows['fullname'];
-if(empty($_SESSION['username'])) {
-    header("Location: ".$duogxaolin->home_url()."/login");
+<?php
+if(empty($_SESSION['teacher'])) {
+    header("Location: ".$duogxaolin->home_url()."/login/teacher");
 }
-require_once('../../includes/header.php');
-require_once('../../includes/navbar.php');
+require_once('includes/header.php');
+require_once('includes/navbar.php');
 ?>
     <div class="header bg-primary pb-6">
       <div class="container-fluid">
@@ -17,12 +15,11 @@ require_once('../../includes/navbar.php');
                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                   <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
                   <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Điểm cá nhân</li>
+                  <li class="breadcrumb-item active" aria-current="page">Trang Chủ</li>
                 </ol>
               </nav>
             </div>
           </div>
-          
           <!-- Card stats -->
           <div class="row">
             <div class="col-xl-3 col-md-6">
@@ -31,8 +28,8 @@ require_once('../../includes/navbar.php');
                 <div class="card-body">
                   <div class="row">
                     <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Tổng Môn Học</h5>
-                      <span class="h2 font-weight-bold mb-0"><?=format_cash($duogxaolin->num_rows("SELECT * FROM `subject`  "));?></span>
+                      <h5 class="card-title text-uppercase text-muted mb-0">Số lớp quản lý <?=$auth['username']?></h5>
+                      <span class="h2 font-weight-bold mb-0"><?=format_cash($duogxaolin->num_rows("SELECT * FROM `class` WHERE `leader` = '".$auth['username']."'  "));?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -105,72 +102,67 @@ require_once('../../includes/navbar.php');
     <!-- Page content -->
     <div class="container-fluid mt--6">
       <div class="row">
-        <div class="col-xl-12">
+      <div class="col-xl-8">
           <div class="card">
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Bảng điểm sinh viên : <a href="<?=$duogxaolin->home_url()?>/student/profile"><strong style="color:red"><?=$auth['fullname']?> </strong> </a></h3>
+                  <h3 class="mb-0">Thông báo</h3>
                 </div>
                
               </div>
             </div>
-            <div class="table-responsive py-4">
-            <table class="table table-flush" id="datatable-buttons">
-                      
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Mã môn</th>
-                                    <th>Môn học</th>
-                                    <th>Số tín chỉ</th>
-                                    <th>Lần thi</th>
-                                    <th>Chuyên cần</th>
-                                    <th>Điểm giữa kỳ</th>
-                                    <th>Điểm thi </th> 
-                                    <th>Điểm môn học </th> 
-                                    <th>Điểm chữ </th>  
-                                    <th>Thời gian học</th> 
-                                    <th>Ghi chú</th>          
-                                    <th>Trạng thái</th>                                  
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php $i = 1; 
-                            foreach ($duogxaolin->get_list(" SELECT * FROM `score` WHERE `username` = '" . $auth['username'] . "' ORDER BY id DESC") as $row) { ?>
-                                <tr>
-                                    <td><?=$i++?></td>
-                                    <td><?=$row['id_subject']?></td>
-                                    <td><?=$row['name_subject']?></td>
-                                    <td><?=$row['tinchi']?></td>
-                                    <td><?=$row['amount']?></td>
-                                    <td><?=$row['score1']?></td>
-                                    <td><?=$row['score2']?></td>
-                                    <td><?=$row['score3']?></td>
-                                    <td><?=$row['score4']?></td>
-                                    <td><?=$row['mark']?></td>
-                                    <td><?=$row['date']?></td>
-                                    <td><?=$row['note']?></td>
-                                    <td><?=$row['status']?></td>
-                                </tr>
-                        <?php } ?>
+            <div class="card-body">
+          <div class="mb-1">
+        <div class="media media-comment"><img alt="Image placeholder" class="avatar avatar-lg media-comment-avatar rounded-circle" src="https://hou.edu.vn/assets/frontend/img/logo/logovien.png">
+            <div class="media-body">
+                <div class="media-comment-text">
+                    <h6 class="h5 mt-0">Phòng đào tạo</h6>
+                    <p class="text-sm lh-160">Cras sit amet nibh libero nulla vel metus scelerisque ante sollicitudin. Cras purus odio vestibulum in vulputate viverra turpis.</p>
+                 
+                </div>
+            </div>
+         </div>
+        <hr>
+    </div>
+</div>
+</div>
+    </div>
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Profile</h3>
+                </div>
+                <div class="col text-right">
+                  <a href="<?=$duogxaolin->home_url()?>/student/profile" class="btn btn-sm btn-primary">See all</a>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col"><?=$auth['fullname']?></th>
+                    <th scope="col"></th>
+                  </tr>
+                  <tr>
+                    <th scope="col">Khóa</th>
+                    <th scope="col"><?=$auth['course']?></th>
+                    <th scope="col"></th>
+                  </tr>
+                  <tr>
+                    <th scope="col">Lớp</th>
+                    <th scope="col"><?=$auth['class']?></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
 
-                            </tbody>
-                            </table>
+              </table>
             </div>
           </div>
         </div>
       </div>
-      <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $("#example2").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
-  });
-</script>
-<?php require_once('../../includes/footer.php')  ?>

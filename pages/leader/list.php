@@ -1,6 +1,6 @@
 <?php 
 require_once('../../config.php');
-$title = "Xem Điểm - TMAS Điện Tử";
+$title = "Danh sách sinh viên".$auth['course']."-".$auth['class'];
 if(empty($_SESSION['username'])) {
     header("Location: ".$duogxaolin->home_url()."/login");
 }

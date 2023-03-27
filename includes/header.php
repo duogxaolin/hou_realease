@@ -83,7 +83,7 @@
         }
     </style>
 <style>
-         :root {
+  :root {
             --primary-color: #0a48b3!important;
         }
     </style>

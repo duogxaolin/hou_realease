@@ -22,7 +22,7 @@ require_once('../../includes/head.php');
              
                 <div class="col-md-6 right">
                     <div class="input-box">
-                        <h2>Đăng Nhập</h2>
+                        <h2>Đăng Nhập Giáo Vụ</h2>
                         <div id="thongbao"></div>
                         <div class="input-field">
                             <input type="text" class="input" id="username" name="username" required autocomplete="off">
@@ -35,10 +35,11 @@ require_once('../../includes/head.php');
                         </div>
 
                         <div class="input-field">
-                            <button type="submit" id="Login" class="btn btn-primary btn-default font-weight-bold">Đăng nhập</button>
+                            <button type="submit" id="Login" class="btn btn-danger btn-default font-weight-bold">Đăng nhập</button>
                             <br>
-                            <a href="<?=$duogxaolin->home_url()?>/login/teacher" class="btn btn-danger btn-default font-weight-bold">Giáo Vụ/Giáo Viên</a>
+                            <a href="<?=$duogxaolin->home_url()?>/login" class="btn btn-primary btn-default font-weight-bold">Sinh viên</a>
                         </div>
+                      
 
                         <div class="forgot">
                             <span>Không nhớ mật khẩu ? <a href="<?=$duogxaolin->home_url()?>/forgot-password">forgot password</a></span>
@@ -57,7 +58,7 @@ $("#Login").on("click", function () {
         url: "<?=$duogxaolin->home_url()?>/ajaxs/login.php",
         method: "POST",
         data: {
-            type: "Login",
+            type: "Admin",
             username: $("#username").val(),
             password: $("#password").val()
         },

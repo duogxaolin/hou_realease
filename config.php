@@ -63,6 +63,13 @@ class System_Core
         return $row;
         
     }
+    public function teacher()
+    {
+        $result = mysqli_query($this->connect_db(), "SELECT * FROM `admin`  WHERE username = '".$_SESSION['teacher']."' ");
+        $row    = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $row;
+        
+    }
    public function anti_text($text)
     {
         $text = html_entity_decode(trim($text), ENT_QUOTES, 'UTF-8');
@@ -257,41 +264,6 @@ function sendTele($message,$domain){
     $result = curl_exec($ch);
     curl_close($ch);
     return $result;
-}
-function extele($content,$domain){
-    return ".$domain. THÔNG BÁO
-
-📝 Nội dung: ".$content."
-🕒 Thời gian: ".date("H:i d-m-Y");
-}
-function checkPassword2($password2)
-{
-    global $duogxaolin;
-    $getUser = $duogxaolin->auth();
-    if($getUser['password2'] != '')
-    {
-        if($getUser['password2'] != $password2)
-        {
-            return false;
-        }
-        return true;
-    }
-    return true;
-}
-function sendCallBack($domain, $Success, $amount,$declared_value, $CardValue, $Pin,$Seri,$requestid,$hash)
-{
-    if(isset($domain))
-    {
-        curl_get("$domain?Success=$Success&amount=$amount&declared_value=$declared_value&CardValue=$CardValue&Pin=$Pin&Seri=$Seri&requestid=$requestid&Hash=$hash");
-    }
-}
-function getSite($name,$domain){
-    global $duogxaolin;
-    return $duogxaolin->get_row("SELECT * FROM `options` WHERE `name` = '$name' AND `domain`=$domain ")['value'];
-}
-function getUser($username, $row,$domain){
-    global $duogxaolin;
-    return $duogxaolin->get_row("SELECT * FROM `users` WHERE `username` = '$username' AND `domain`=$domain ")[$row];
 }
 function format_date($time){
     return date("H:i:s d/m/Y", $time);
@@ -654,6 +626,27 @@ if(isset($_SESSION['username']))
     session_destroy();
     header('location: /');
     }
-}
 $auth = $duogxaolin->auth();
 $getUser = $auth;
+}
+if(isset($_SESSION['teacher']))
+{
+    $getUsers = $duogxaolin->teacher();
+ if($getUsers['ip']!= myip()){
+    session_start();
+    session_destroy();
+    header('location: /');
+}if($getUsers['agent_id']!= myagent()){
+    session_start();
+    session_destroy();
+    header('location: /');
+    }
+    if ($getUsers['php'] != PHPSESSID()) {
+    session_start();
+    session_destroy();
+    header('location: /');
+    }
+$auth = $duogxaolin->teacher();
+$getUser = $auth;
+}
+
