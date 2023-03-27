@@ -1,0 +1,1 @@
+s:324:"<script type="text/javascript">$(function(){$('.textarea').summernote()1NS3R7N3WL1N3$('.my-colorpicker1').colorpicker()1NS3R7N3WL1N3$('.my-colorpicker2').colorpicker()1NS3R7N3WL1N3$('.my-colorpicker2').on('colorpickerChange',function(event){$('.my-colorpicker2 .fa-square').css('color',event.color.toString());});})</script>";

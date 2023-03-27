@@ -151,7 +151,7 @@ require_once('../../includes/navbar.php');
                                     <td><?=$row['mark']?></td>
                                     <td><?=$row['date']?></td>
                                     <td><?=$row['note']?></td>
-                                    <td><?=$row['status']?></td>
+                                    <td><?=status($row['status'])?></td>
                                 </tr>
                         <?php } ?>
 

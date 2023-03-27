@@ -63,13 +63,13 @@
               <div class="collapse" id="navbar-examples">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a href="#l" class="nav-link">
+                    <a data-toggle="modal" data-target="#wait" href="#l" class="nav-link">
                       <span class="sidenav-mini-icon"> L </span>
                       <span class="sidenav-normal"> Lịch Học </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a data-toggle="modal" data-target="#wait" href="#" class="nav-link">
                       <span class="sidenav-mini-icon"> T </span>
                       <span class="sidenav-normal"> Lịch thi </span>
                     </a>
@@ -108,11 +108,22 @@
                 </ul>
               </div>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link" href="<?=$duogxaolin->home_url()?>/student/list/subject">
+              <i class="ni ni-ungroup text-orange"></i>
+                <span class="nav-link-text">Danh sách môn phải học</span>
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" data-toggle="modal" data-target="#ChangePassword">
               <i class="ni ni-align-left-2 text-default"></i>
                 <span class="nav-link-text">Đổi mật khẩu</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?=$duogxaolin->home_url()?>/helper/1">
+              <i class="ni ni-single-copy-04 text-pink"></i>
+                <span class="nav-link-text">Hỗ trợ</span>
               </a>
             </li>
             <li class="nav-item">
@@ -235,9 +246,9 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?=$duogxaolin->home_url()?>/student/profile">
-              <i class="ni ni-single-02"></i>
-                <span class="nav-link-text">Trang cá nhân</span>
+              <a class="nav-link" href="<?=$duogxaolin->home_url()?>/teacher/finds">
+              <i class="fas fa-search"></i>
+                <span class="nav-link-text">Tìm Sinh Viên</span>
               </a>
             </li>
             <li class="nav-item">

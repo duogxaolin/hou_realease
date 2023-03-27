@@ -51,7 +51,7 @@ require_once('../../includes/navbar.php');
                                     <th>Lớp</th>
                                     <th>Số sinh viên</th>
                                     <th>Cán bộ lớp</th>
-                                    <th>Xem danh sách lớp</th>                              
+                                    <th></th>                              
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,7 +72,7 @@ require_once('../../includes/navbar.php');
                                     <td><span class="dtr-data">
                                         <a type="button" href="<?=$duogxaolin->home_url()?>/teacher/view/class/<?=$row['course']?>-<?=$row['class_id']?>" class="btn btn-primary">
                                        <i class="fas fa-edit"></i>
-                                      <span>Xem ngay</span>
+                                      <span>Quản lý</span>
                                         </a>
                                       </span></td>
                                 </tr>

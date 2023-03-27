@@ -35,6 +35,26 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="wait" tabindex="-1" role="dialog" aria-labelledby="waitLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="waitLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="modal-body">
+            <strong>Chức năng đang được phát triển sẽ có trong thời gian tới</strong>
+          </div>
+        <div class="modal-footer">
+          <button type="summit" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+        </div>
+    </div>
+  </div>
+</div>
 <!-- Footer -->
 <footer class="footer pt-0">
   <div class="row align-items-center justify-content-lg-between">
@@ -60,7 +80,7 @@
 <!-- Argon Scripts -->
 
 </body>
-<script src="<?= $duogxaolin->home_url() ?>/src/dashboard/assets/vendor/jquery/dist/jquery.min.js"></script>
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?= $duogxaolin->home_url() ?>/src/dashboard/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= $duogxaolin->home_url() ?>/src/dashboard/assets/vendor/js-cookie/js.cookie.js"></script>

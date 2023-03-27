@@ -9,7 +9,7 @@ RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 #auth
-ErrorDocument 404 /404.html
+ErrorDocument 404 https://localhost/hou_realease/404.php
 RewriteRule ^home$ index.php [L]
 RewriteRule ^login$ pages/auth/login.php [L]
 RewriteRule ^login/teacher$ pages/auth/login-teacher.php [L]
@@ -23,6 +23,9 @@ RewriteRule ^student/check-point/nonpass$ pages/student/point_nonpass.php [L]
 RewriteRule ^student/profile$ pages/student/profile.php [L]
 RewriteRule ^student/reset$ pages/auth/reset.php [L]
 RewriteRule ^student/peee$ pages/student/pee.php [L]
+RewriteRule ^student/list/subject$ pages/student/subject.php [L]
+RewriteRule ^helper/([A-Za-z0-9-]+)$ blogs/list.php?tab=$1 [L]
+RewriteRule ^helpers blogs/lists.php [L]
 
 #cán bộ lớp
 RewriteRule ^leader/list/([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$ pages/leader/list.php?course=$1&class=$2 [L]
@@ -30,4 +33,7 @@ RewriteRule ^leader/view/([A-Za-z0-9-]+)$ pages/leader/view.php?usn=$1 [L]
 
 #teacher
 RewriteRule ^teacher/class/list$ pages/teacher/list-class.php [L]
+RewriteRule ^teacher/finds$ pages/teacher/finds.php [L]
+RewriteRule ^teacher/createBlogs$ pages/teacher/blogs.php [L]
 RewriteRule ^teacher/view/student/([A-Za-z0-9-]+)$ pages/teacher/students.php?username=$1 [L]
+RewriteRule ^teacher/view/class/([A-Za-z0-9-]+)-([A-Za-z0-9-]+)$ pages/teacher/class.php?course=$1&class=$2 [L]

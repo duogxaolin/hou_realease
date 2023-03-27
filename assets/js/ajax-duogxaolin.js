@@ -55,6 +55,7 @@ $(document).ready(function() {
         let _this = this;
         let url = $(_this).attr("action");
         let method = $(_this).attr("method");
+        let enctype = "multipart/form-data";
         let href = $(_this).attr("href");
         let data = $(_this).serialize();
         let button = $(_this).find("button[type=submit]");
@@ -70,7 +71,7 @@ $(document).ready(function() {
                 cancelButtonText: "Đóng",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    submitForm(url, method, href, data, button);
+                    submitForm(url, method, enctype, href, data, button);
                 }
             });
         } else {
