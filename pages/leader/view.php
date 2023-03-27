@@ -1,6 +1,6 @@
 <?php 
 require_once('../../config.php');
-$title = "Bảng điểm - ".$rows['fullname'];
+
 if(empty($_SESSION['username'])) {
     header("Location: ".$duogxaolin->home_url()."/login");
 }
@@ -17,7 +17,7 @@ else
     die("<script type='text/javascript'>alert('Liên kết không tồn tại');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."' },500);</script>");
 }
 if($auth['level'] == 'leader' and $auth['class'] == $rows['class'] and $auth['course'] == $rows['course']){
-
+  $title = "Bảng điểm - ".$rows['fullname'];
 require_once('../../includes/header.php');
 require_once('../../includes/navbar.php');
 ?>

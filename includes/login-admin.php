@@ -1,4 +1,4 @@
-<?php require_once('../config.php');
+<?php
 if(isset($_SESSION['username'])){
     header("Location: ".$duogxaolin->home_url()."/logout");
 }

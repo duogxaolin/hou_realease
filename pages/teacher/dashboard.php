@@ -1,7 +1,5 @@
 <?php
-if(empty($_SESSION['teacher'])) {
-    header("Location: ".$duogxaolin->home_url()."/login/teacher");
-}
+require_once('includes/login-admin.php');
 require_once('includes/header.php');
 require_once('includes/navbar.php');
 ?>
@@ -22,79 +20,8 @@ require_once('includes/navbar.php');
           </div>
           <!-- Card stats -->
           <div class="row">
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Số lớp quản lý <?=$auth['username']?></h5>
-                      <span class="h2 font-weight-bold mb-0"><?=format_cash($duogxaolin->num_rows("SELECT * FROM `class` WHERE `leader` = '".$auth['username']."'  "));?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                        <i class="ni ni-active-40"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Tổng Số Tín Chỉ</h5>
-                      <span class="h2 font-weight-bold mb-0"><?=format_cash($duogxaolin->get_row("SELECT SUM(`tinchi`) FROM `subject` WHERE `tinchi` > 0 ")['SUM(`tinchi`)']);?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                        <i class="ni ni-chart-pie-35"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Tín Hoàn Thành</h5>
-                      <span class="h2 font-weight-bold mb-0"><?=format_cash($duogxaolin->get_row("SELECT SUM(`tinchi`) FROM `score` WHERE `tinchi` > 0 AND `username` = '".$auth['username']."' AND `status` = 1 ")['SUM(`tinchi`)']);?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
-                        <i class="ni ni-money-coins"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-md-6">
-              <div class="card card-stats">
-                <!-- Card body -->
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Số Tín Chưa Học</h5>
-                      <span class="h2 font-weight-bold mb-0"><?=format_cash($duogxaolin->get_row("SELECT SUM(`tinchi`) FROM `subject` WHERE `tinchi` > 0 ")['SUM(`tinchi`)'] - $duogxaolin->get_row("SELECT SUM(`tinchi`) FROM `score` WHERE `tinchi` > 0 AND `username` = '".$auth['username']."' AND `status` = 1 ")['SUM(`tinchi`)'])?></span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
-                        <i class="ni ni-chart-bar-32"></i>
-                      </div>
-                    </div>
-                  </div>
-                 
-                </div>
-              </div>
-            </div>
+
+
           </div>
         </div>
       </div>
@@ -133,10 +60,10 @@ require_once('includes/navbar.php');
             <div class="card-header border-0">
               <div class="row align-items-center">
                 <div class="col">
-                  <h3 class="mb-0">Profile</h3>
+                  <h3 class="mb-0">Số Lớp quản lý: <?=format_cash($duogxaolin->num_rows("SELECT * FROM `class` WHERE `leader` = '".$auth['username']."'  "));?></h3>
                 </div>
                 <div class="col text-right">
-                  <a href="<?=$duogxaolin->home_url()?>/student/profile" class="btn btn-sm btn-primary">See all</a>
+                  <a href="<?=$duogxaolin->home_url()?>/teacher/class/list" class="btn btn-sm btn-primary">See all</a>
                 </div>
               </div>
             </div>
@@ -145,22 +72,21 @@ require_once('includes/navbar.php');
               <table class="table align-items-center table-flush">
                 <thead class="thead-light">
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col"><?=$auth['fullname']?></th>
-                    <th scope="col"></th>
-                  </tr>
-                  <tr>
                     <th scope="col">Khóa</th>
-                    <th scope="col"><?=$auth['course']?></th>
-                    <th scope="col"></th>
-                  </tr>
-                  <tr>
                     <th scope="col">Lớp</th>
-                    <th scope="col"><?=$auth['class']?></th>
-                    <th scope="col"></th>
                   </tr>
                 </thead>
+                <tbody>
+                            <?php $i = 1; 
+                            foreach ($duogxaolin->get_list(" SELECT * FROM `class` WHERE `leader` = '".$auth['username']."' ORDER BY id DESC") as $row) { ?>
+                                <tr>
+                                   
+                                    <td><?=$row['course']?></td>
+                                    <td><?=$row['name']?></td>
+                                </tr>
+                        <?php } ?>
 
+                            </tbody>
               </table>
             </div>
           </div>

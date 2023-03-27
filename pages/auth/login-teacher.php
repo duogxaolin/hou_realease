@@ -1,7 +1,7 @@
 <?php
 require_once('../../config.php');
 $title = "Đăng Nhập - TMAS Điện Tử";
-if(isset($_SESSION['username'])) {
+if(isset($_SESSION['teacher'])) {
     header("Location: ".$duogxaolin->home_url()."/home");
 }
 require_once('../../includes/head.php');
