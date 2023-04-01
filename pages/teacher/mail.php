@@ -1,9 +1,16 @@
 <?php
 require_once('../../config.php');
-if(isset($_GET['del']) and isset($_SESSION['teacher'])){
-    $id = check_string($_GET['del']);
-    $duogxaolin->remove("blogs", " `id` = '$id' ");
-    die("<script type='text/javascript'>alert('Xóa bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
+require_once('../../class/class.smtp.php');
+require_once('../../class/PHPMailerAutoload.php');
+require_once('../../class/class.phpmailer.php');
+if(isset($_GET['username']) AND isset($_SESSION['teacher'])) {
+    $rows = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `username` = '".check_string($_GET['username'])."' ");
+    if(!$rows)
+    {
+        die("<script type='text/javascript'>alert('Người dùng này không tồn tại');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/class/list' },500);</script>");
+    }
+}else{
+    header("Location: ".$duogxaolin->home_url()."/teacher/finds");
 }
 if (isset($_SESSION['teacher']) and isset($_POST['btnCreate'])) {
     $return = array(
@@ -11,31 +18,28 @@ if (isset($_SESSION['teacher']) and isset($_POST['btnCreate'])) {
     );
     $title = check_string($_POST['title']);
     $content = $_POST['content'];
-    $slug = $duogxaolin->to_slug($title);
-    $random_code = rand(0,1000);
-        $uploads_dir = '../../assets/image/';
-        $tmp_name = $_FILES['images']['tmp_name'];
-        $create = move_uploaded_file($tmp_name, $uploads_dir."/".$slug."_".$random_code.".png");  
-    if($create){
-        $duogxaolin->insert("blogs", [
+    $guitoi = $rows['email'];   
+    $subject = $title;
+    $bcc = 'DUOGXAOLIN.DEV';
+    $noi_dung = '<div id=":n5" class="a3s aiL ">
+    <p><strong>Xin chào : </strong> '.$row['fullname'].' </p>
+    <br>'.$content.'<br>
+    <p>Tmas - Hệ Thống Quản Lý Đào Tạo</p>
+    </div>';
+    sendCSM($guitoi, $hoten, $subject, $noi_dung, $bcc,$domain); 
+        $duogxaolin->insert("mail", [
             'title'     => $title,
             'content'   => $content,
-            'slug'   => $slug,
-            'img'       => $duogxaolin->home_url().'/assets/image/'.$slug."_".$random_code.".png",
-            'view'      => 0,
             'time'      => gettime(),
-            'thoigian'  => time()
-        ]);
-        die("<script type='text/javascript'>alert('Thêm bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
-    }else{
-        $return['error']      = 1;
-        $return['msg']        = 'lỗi !';
-        die(json_encode($return));
-    }
+            'thoigian'  => time(),
+            'student'   => $rows['username'],
+            'teacher'   => $auth['username']
+                ]);
+        die("<script type='text/javascript'>alert('Gửi Thông Báo Thành Công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_uri()."' },1000);</script>");
 
 }
 
-$title = "Tìm Kiếm Sinh Viên";
+$title = "Gửi Email";
 require_once('../../includes/login-admin.php');
 require_once('../../includes/header.php');
 require_once('../../includes/navbar.php');
@@ -88,14 +92,6 @@ require_once('../../includes/navbar.php');
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Ảnh mô tả</label>
-                                <div class="col-sm-9">
-                                    <div class="form-line">
-                                        <input class="form-control" type="file" name="images" multiple require>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Nội dung bài viết</label>
                                 <div class="col-sm-9">
                                     <div class="form-line">
@@ -109,35 +105,34 @@ require_once('../../includes/navbar.php');
 
                 </form>
                 <div class="table-responsive py-4">
-            <table class="table table-flush" id="datatable-buttons">
+                <table class="table table-flush" id="datatable-buttons">
                       
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Tên</th>
-                                    <th>IMG</th>
-                                    <th></th>                              
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php $i = 1; 
-                            foreach ($duogxaolin->get_list(" SELECT * FROM `blogs` ORDER BY id DESC") as $row) { 
-                            
-                                ?>
-                                <tr>
-                                    <td><?=$i++?></td>
-                                    <td><?=$row['title']?></td>
-                                    <td> <img src="<?=$row['img']?>" style="height:50px"></td>
-                                   
-                                    <td>
-                                        <a href="<?=$duogxaolin->home_url()?>/teacher/editBlogs/<?=$row['id']?>" class="btn btn-primary">Sửa</a>
-                                        <a onclick="return confirm('bạn có đồng ý xóa Không ?');" href="<?=$duogxaolin->home_url()?>/teacher/createBlogs?del=<?=$row['id']?>" class="btn btn-danger">Xóa</a>
-                                    </td>
-                                </tr>
-                        <?php } ?>
+                      <thead>
+                          <tr>
+                              <th>STT</th>
+                              <th>Tên</th>
+                              <th>Nội dung</th>
+                              <th>Mã Sinh Viên</th>
+                                                      
+                          </tr>
+                      </thead>
+                      <tbody>
+                      <?php $i = 1; 
+                      foreach ($duogxaolin->get_list(" SELECT * FROM `mail` WHERE `teacher` = '".$auth['username']."' ORDER BY id DESC") as $row) { 
+                      
+                          ?>
+                          <tr>
+                              <td><?=$i++?></td>
+                              <td><?=$row['title']?></td>
+                              <td> <?=$row['content']?></td>
+                              <td><a type="button" href="<?= $duogxaolin->home_url() ?>/teacher/view/student/ <?=$row['student']?>">
+                                   <?=$row['student']?></a></td>
+                             
+                          </tr>
+                  <?php } ?>
 
-                            </tbody>
-                            </table>
+                      </tbody>
+                      </table>
             </div>
 
             </div>

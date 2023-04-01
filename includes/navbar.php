@@ -254,20 +254,20 @@
             <li class="nav-item">
               <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
                 <i class="ni ni-ungroup text-orange"></i>
-                <span class="nav-link-text">Lịch</span>
+                <span class="nav-link-text">Hỗ Trợ</span>
               </a>
               <div class="collapse" id="navbar-examples">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a href="#l" class="nav-link">
+                    <a href="<?=$duogxaolin->home_url()?>/teacher/blogs/create" class="nav-link">
                       <span class="sidenav-mini-icon"> L </span>
-                      <span class="sidenav-normal"> Lịch Học </span>
+                      <span class="sidenav-normal">Thêm bài </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="<?=$duogxaolin->home_url()?>/helpers" class="nav-link">
                       <span class="sidenav-mini-icon"> T </span>
-                      <span class="sidenav-normal"> Lịch thi </span>
+                      <span class="sidenav-normal"> Danh sách </span>
                     </a>
                   </li>
 
@@ -278,29 +278,28 @@
             <li class="nav-item">
               <a class="nav-link" href="#navbar-check" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-check">
               <i class="ni ni-map-big text-primary"></i>
-                <span class="nav-link-text">Điểm cá nhân</span>
+                <span class="nav-link-text">Thông báo</span>
               </a>
               <div class="collapse" id="navbar-check">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a href="<?=$duogxaolin->home_url()?>/student/check-point" class="nav-link">
+                    <a href="<?=$duogxaolin->home_url()?>/teacher/noti/create" class="nav-link">
                       <span class="sidenav-mini-icon"> T </span>
-                      <span class="sidenav-normal"> Tất cả </span>
+                      <span class="sidenav-normal"> Trên web </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="<?=$duogxaolin->home_url()?>/student/check-point/pass" class="nav-link">
+                    <a href="<?=$duogxaolin->home_url()?>/teacher/finds" class="nav-link">
                       <span class="sidenav-mini-icon"> P </span>
-                      <span class="sidenav-normal">Môn đã qua </span>
+                      <span class="sidenav-normal">Từng Học Sinh </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="<?=$duogxaolin->home_url()?>/student/check-point/nonpass" class="nav-link">
-                      <span class="sidenav-mini-icon"> T </span>
-                      <span class="sidenav-normal">Môn trượt </span>
+                    <a href="<?=$duogxaolin->home_url()?>/teacher/class/list" class="nav-link">
+                      <span class="sidenav-mini-icon"> C </span>
+                      <span class="sidenav-normal">Theo lớp </span>
                     </a>
                   </li>
-
                 </ul>
               </div>
             </li>

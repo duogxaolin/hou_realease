@@ -1,38 +1,35 @@
 <?php
 require_once('../../config.php');
-if(isset($_GET['del']) and isset($_SESSION['teacher'])){
-    $id = check_string($_GET['del']);
-    $duogxaolin->remove("blogs", " `id` = '$id' ");
-    die("<script type='text/javascript'>alert('Xóa bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
+if(isset($_GET['id'])){
+    $row = $duogxaolin->get_row(" SELECT * FROM `blogs` WHERE `id` = '".check_string($_GET['id'])."'  ");
+    if(!$row) {
+        die("<script type='text/javascript'>alert('Bài viết không tồn tại');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
+    }
+}else{
+    die("<script type='text/javascript'>alert('Bài viết không tồn tại');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
 }
 if (isset($_SESSION['teacher']) and isset($_POST['btnCreate'])) {
     $return = array(
         'error' => 0
     );
     $title = check_string($_POST['title']);
-    $content = $_POST['content'];
     $slug = $duogxaolin->to_slug($title);
+    $content = $_POST['content'];
     $random_code = rand(0,1000);
+    if(check_img('images') == true)
+    {
         $uploads_dir = '../../assets/image/';
         $tmp_name = $_FILES['images']['tmp_name'];
         $create = move_uploaded_file($tmp_name, $uploads_dir."/".$slug."_".$random_code.".png");  
-    if($create){
-        $duogxaolin->insert("blogs", [
-            'title'     => $title,
-            'content'   => $content,
-            'slug'   => $slug,
+        $duogxaolin->update("blogs", [
             'img'       => $duogxaolin->home_url().'/assets/image/'.$slug."_".$random_code.".png",
-            'view'      => 0,
-            'time'      => gettime(),
-            'thoigian'  => time()
-        ]);
-        die("<script type='text/javascript'>alert('Thêm bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
-    }else{
-        $return['error']      = 1;
-        $return['msg']        = 'lỗi !';
-        die(json_encode($return));
+        ], " `id` = '".$row['id']."' ");
     }
-
+    $duogxaolin->update("blogs", [
+        'title'     => $title,
+        'content'   => $content,
+    ], " `id` = '".$row['id']."' ");
+    die("<script type='text/javascript'>alert('Sửa bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_uri()."' },0);</script>");
 }
 
 $title = "Tìm Kiếm Sinh Viên";
@@ -82,7 +79,7 @@ require_once('../../includes/navbar.php');
                                 <label class="col-sm-3 col-form-label">Tiêu đề bài viết</label>
                                 <div class="col-sm-9">
                                     <div class="form-line">
-                                        <input type="text" name="title" placeholder="Nhập tiêu đề bài viết"
+                                        <input type="text" name="title" value="<?=$row['title']?>"
                                             class="form-control" require>
                                     </div>
                                 </div>
@@ -99,14 +96,13 @@ require_once('../../includes/navbar.php');
                                 <label class="col-sm-3 col-form-label">Nội dung bài viết</label>
                                 <div class="col-sm-9">
                                     <div class="form-line">
-                                        <textarea class="textarea" name="content"></textarea>
+                                        <textarea class="textarea" name="content"><?=$row['content']?></textarea>
                                     </div>
                                 </div>
                             </div>
                             <button type="submit" name="btnCreate" class="btn btn-primary btn-block">
-                                <span>THÊM NGAY</span></button>
+                                <span>THAY ĐỔI</span></button>
                     </div>
-
                 </form>
                 <div class="table-responsive py-4">
             <table class="table table-flush" id="datatable-buttons">

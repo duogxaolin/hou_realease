@@ -5,13 +5,19 @@
         exit();
     }
     $title = 'QUÊN MẬT KHẨU | '.$duogxaolin->site('tenweb',$domain);
+    $check = check_string($_GET['type']);
+    if($check=='teacher'){
+        $type = 'admin';
+    }else if($check=='student'){
+        $type = 'users';
+    }
     if(!isset($_GET['username']) && !isset($_GET['code']) ){
         header('location:/');
         exit();
 } else {
-    $username = mysqli_escape_string($duogxaolin->connect_db(), addslashes($_GET['username']));
-    $code = mysqli_escape_string($duogxaolin->connect_db(), addslashes($_GET['code']));
-    $row2 = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `username` = '$username' ");
+    $username = check_string($_GET['username']);
+    $code = check_string($_GET['code']);
+    $row2 = $duogxaolin->get_row(" SELECT * FROM `$type` WHERE `username` = '$username' ");
     if (!$row2) {
         die("<script type='text/javascript'>alert('Tài Khoản Không Tồn Tại Trên Hệ Thống!');;setTimeout(function(){ location.href = '/' },1000);</script>");
     }
@@ -29,9 +35,11 @@
         ?>
 
 <body>
-    <form>
+<form submit-ajax="duogxaolin" action="<?=$duogxaolin->home_url();?>/ajaxs/reset.php" method="post" class="mt-4">
     <input type="hidden" class="form-control" id="username"
                                                     value="<?= $username ?>">
+   <input type="hidden" class="form-control" id="type"
+                                                    value="<?= $type ?>">
                                   <input type="hidden" class="form-control" id="otp"
                                                     value="<?= $code ?>">
     <div class="wrapper">
@@ -48,7 +56,6 @@
                 <div class="col-md-6 right">
                     <div class="input-box">
                         <h2>Đăng Nhập</h2>
-                        <div id="thongbao"></div>
                         <div class="input-field">
                         <input type="text" class="input"
                                                    name="password" 
@@ -59,13 +66,11 @@
                      
 
                         <div class="input-field">
-                        <button type="submit"  id="reset"class="btn btn-primary btn-default font-weight-bold">Xác nhận</button>
+                        <button type="submit"  id="submit"class="btn btn-primary btn-default font-weight-bold">Xác nhận</button>
 
                         </div>
 
-                        <div class="forgot">
-                            <span>Không nhớ mật khẩu ? <a href="<?=$duogxaolin->home_url()?>/forgot-password">forgot password</a></span>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -73,25 +78,6 @@
         </div>
     </div>
     </form>
-
-<script type="text/javascript">
-$("#reset").on("click", function () {
-    $("#reset").html("ĐANG XỬ LÝ").prop("disabled", true);
-    $.ajax({
-        url: "<?=$duogxaolin->home_url();?>/ajaxs/reset.php",
-        method: "POST",
-        data: {
-            username: $("#username").val(),
-            otp: $("#otp").val(),
-            password: $("#password").val()
-        },
-        success: function (_0x3e47x1) {
-            $("#thongbao").html(_0x3e47x1);
-            $("#reset").html("Đổi mật khẩu").prop("disabled", false)
-        }
-    })
-})
-</script>
 <?php 
 require_once('../../includes/foot.php');
 ?>

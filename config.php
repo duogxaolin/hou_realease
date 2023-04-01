@@ -127,6 +127,13 @@ class System_Core
         curl_close($ch);
         return $data;
     }
+    public function get_blogs($slug)
+    {
+        $result = mysqli_query($this->connect_db(), "SELECT * FROM blogs  WHERE slug ='$slug'");
+        $row    = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $row;
+        
+    }
 
     function site($data, $domain)
     {

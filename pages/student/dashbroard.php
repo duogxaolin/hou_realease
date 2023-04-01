@@ -117,16 +117,20 @@ require_once('includes/navbar.php');
             </div>
             <div class="card-body">
           <div class="mb-1">
-        <div class="media media-comment"><img alt="Image placeholder" class="avatar avatar-lg media-comment-avatar rounded-circle" src="https://hou.edu.vn/assets/frontend/img/logo/logovien.png">
+        <?php  foreach ($duogxaolin->get_list(" SELECT * FROM `notification` ORDER BY id DESC LIMIT 5") as $rows) { ?>
+          <div class="media media-comment">
+            <img alt="Image placeholder" class="avatar avatar-lg media-comment-avatar rounded-circle" src="https://hou.edu.vn/assets/frontend/img/logo/logovien.png">
             <div class="media-body">
                 <div class="media-comment-text">
-                    <h6 class="h5 mt-0">Phòng đào tạo</h6>
-                    <p class="text-sm lh-160">Cras sit amet nibh libero nulla vel metus scelerisque ante sollicitudin. Cras purus odio vestibulum in vulputate viverra turpis.</p>
+                    <h6 class="h5 mt-0">Phòng đào tạo </h6>
+                    <small><?=$rows['time']?></small>
+                    <p class="text-sm lh-160"><?=$rows['content']?></p>
                  
                 </div>
             </div>
          </div>
         <hr>
+          <?php } ?>
     </div>
 </div>
 </div>

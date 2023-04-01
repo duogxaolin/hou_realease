@@ -2,8 +2,8 @@
 require_once('../../config.php');
 if(isset($_GET['del']) and isset($_SESSION['teacher'])){
     $id = check_string($_GET['del']);
-    $duogxaolin->remove("blogs", " `id` = '$id' ");
-    die("<script type='text/javascript'>alert('Xóa bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
+    $duogxaolin->remove("notification", " `id` = '$id' ");
+    die("<script type='text/javascript'>alert('Xóa bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/noti/create' },1000);</script>");
 }
 if (isset($_SESSION['teacher']) and isset($_POST['btnCreate'])) {
     $return = array(
@@ -11,27 +11,14 @@ if (isset($_SESSION['teacher']) and isset($_POST['btnCreate'])) {
     );
     $title = check_string($_POST['title']);
     $content = $_POST['content'];
-    $slug = $duogxaolin->to_slug($title);
     $random_code = rand(0,1000);
-        $uploads_dir = '../../assets/image/';
-        $tmp_name = $_FILES['images']['tmp_name'];
-        $create = move_uploaded_file($tmp_name, $uploads_dir."/".$slug."_".$random_code.".png");  
-    if($create){
-        $duogxaolin->insert("blogs", [
+        $duogxaolin->insert("notification", [
             'title'     => $title,
             'content'   => $content,
-            'slug'   => $slug,
-            'img'       => $duogxaolin->home_url().'/assets/image/'.$slug."_".$random_code.".png",
-            'view'      => 0,
             'time'      => gettime(),
             'thoigian'  => time()
         ]);
-        die("<script type='text/javascript'>alert('Thêm bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/createBlogs' },1000);</script>");
-    }else{
-        $return['error']      = 1;
-        $return['msg']        = 'lỗi !';
-        die(json_encode($return));
-    }
+        die("<script type='text/javascript'>alert('Thêm bài viết thành công !');;setTimeout(function(){ location.href = '".$duogxaolin->home_url()."/teacher/noti/create' },1000);</script>");
 
 }
 
@@ -88,14 +75,6 @@ require_once('../../includes/navbar.php');
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Ảnh mô tả</label>
-                                <div class="col-sm-9">
-                                    <div class="form-line">
-                                        <input class="form-control" type="file" name="images" multiple require>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Nội dung bài viết</label>
                                 <div class="col-sm-9">
                                     <div class="form-line">
@@ -115,23 +94,22 @@ require_once('../../includes/navbar.php');
                                 <tr>
                                     <th>STT</th>
                                     <th>Tên</th>
-                                    <th>IMG</th>
+                                    <th>Nội dung</th>
                                     <th></th>                              
                                 </tr>
                             </thead>
                             <tbody>
                             <?php $i = 1; 
-                            foreach ($duogxaolin->get_list(" SELECT * FROM `blogs` ORDER BY id DESC") as $row) { 
+                            foreach ($duogxaolin->get_list(" SELECT * FROM `notification` ORDER BY id DESC") as $row) { 
                             
                                 ?>
                                 <tr>
                                     <td><?=$i++?></td>
                                     <td><?=$row['title']?></td>
-                                    <td> <img src="<?=$row['img']?>" style="height:50px"></td>
+                                    <td> <?=$row['content']?></td>
                                    
                                     <td>
-                                        <a href="<?=$duogxaolin->home_url()?>/teacher/editBlogs/<?=$row['id']?>" class="btn btn-primary">Sửa</a>
-                                        <a onclick="return confirm('bạn có đồng ý xóa Không ?');" href="<?=$duogxaolin->home_url()?>/teacher/createBlogs?del=<?=$row['id']?>" class="btn btn-danger">Xóa</a>
+                                        <a onclick="return confirm('bạn có đồng ý xóa Không ?');" href="<?=$duogxaolin->home_uri()?>?del=<?=$row['id']?>" class="btn btn-danger">Xóa</a>
                                     </td>
                                 </tr>
                         <?php } ?>

@@ -10,6 +10,7 @@
     $password = check_string($_POST['password']);
     $newpassword = check_string($_POST['newpassword']);
     $renewpassword = check_string($_POST['renewpassword']);
+    $type = $_SESSION['type'];
     if(empty($password))
     {
         $return['error'] = 1;
@@ -28,7 +29,7 @@
         $return['msg']   = 'Bạn chưa nhập lại mật khẩu mới';
         die(json_encode($return));
     }
-    $row2 = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `username` = '".$auth['username']."' ");
+    $row2 = $duogxaolin->get_row(" SELECT * FROM `$type` WHERE `username` = '".$auth['username']."' ");
     if(!$row2)
     {
         $return['error'] = 1;
@@ -57,7 +58,7 @@
         $return['msg']   = 'Vui lòng nhập mật khẩu có ích nhất 5 ký tự';
         die(json_encode($return));
     }
-    $duogxaolin->update("users", [
+    $duogxaolin->update("$type", [
         'otp' => 'NULL',
         'password' => $newpassword,
     ], " `username` = '".$auth['username']."' ");

@@ -7,6 +7,10 @@
         $return = array(
             'error' => 0
         );
+        if(isset($_SESSION['teacher'])){
+            $return['error'] = 1;
+            $return['msg'] = 'Không có quyền';
+        }
     $type = check_string($_POST['type']);
     $username = check_string($_POST['student']);
     $href = check_string($_POST['href']);

@@ -8,7 +8,7 @@ require_once('../../includes/head.php');
 ?>
 
 <body>
-    <form>
+<form submit-ajax="duogxaolin" action="<?=$duogxaolin->home_url()?>/ajaxs/login.php" method="post" class="mt-4">
     <div class="wrapper">
         <div class="container main-login">
             <div class="row row-login">
@@ -23,7 +23,7 @@ require_once('../../includes/head.php');
                 <div class="col-md-6 right">
                     <div class="input-box">
                         <h2>Đăng Nhập Giáo Vụ</h2>
-                        <div id="thongbao"></div>
+                        <input type="hidden" id="type" name="type" value="Admin">
                         <div class="input-field">
                             <input type="text" class="input" id="username" name="username" required autocomplete="off">
                             <label for="email">Email hoặc MSV</label>
@@ -35,14 +35,14 @@ require_once('../../includes/head.php');
                         </div>
 
                         <div class="input-field">
-                            <button type="submit" id="Login" class="btn btn-danger btn-default font-weight-bold">Đăng nhập</button>
+                            <button type="submit" id="submit" name="submit" class="btn btn-danger btn-default font-weight-bold">Đăng nhập</button>
                             <br>
                             <a href="<?=$duogxaolin->home_url()?>/login" class="btn btn-primary btn-default font-weight-bold">Sinh viên</a>
                         </div>
                       
 
                         <div class="forgot">
-                            <span>Không nhớ mật khẩu ? <a href="<?=$duogxaolin->home_url()?>/forgot-password">forgot password</a></span>
+                            <span>Không nhớ mật khẩu ? <a href="<?=$duogxaolin->home_url()?>/forgot-password/admin">forgot password</a></span>
                         </div>
                     </div>
                 </div>
@@ -51,24 +51,6 @@ require_once('../../includes/head.php');
         </div>
     </div>
     </form>
-    <script type="text/javascript">
-$("#Login").on("click", function () {
-    $("#Login").html("ĐANG XỬ LÝ").prop("disabled", true);
-    $.ajax({
-        url: "<?=$duogxaolin->home_url()?>/ajaxs/login.php",
-        method: "POST",
-        data: {
-            type: "Admin",
-            username: $("#username").val(),
-            password: $("#password").val()
-        },
-        success: function (_0x2d24x1) {
-            $("#thongbao").html(_0x2d24x1);
-            $("#Login").html("Đăng nhập tài khoản").prop("disabled", false)
-        }
-    })
-})
-    </script>
     <?php
     require_once('../../includes/foot.php');
     ?>

@@ -4,11 +4,11 @@ $title = "Quên Mật Khẩu - TMAS Điện Tử";
 if(isset($_SESSION['username'])) {
     header("Location: ".$duogxaolin->home_url()."/home");
 }
+$type = check_string($_GET['type']);
 require_once('../../includes/head.php');
 ?>
-
 <body>
-    <form>
+<form submit-ajax="duogxaolin" action="<?=$duogxaolin->home_url();?>/ajaxs/forgot.php" method="post" class="mt-4">
     <div class="wrapper">
         <div class="container main-login">
             <div class="row row-login">
@@ -23,15 +23,15 @@ require_once('../../includes/head.php');
                 <div class="col-md-6 right">
                     <div class="input-box">
                         <h2>Quên Mật Khẩu</h2>
-                        <div id="thongbao"></div>
                         <div class="input-field">
+                            <input type="hidden" id="type" name="type" value="<?=$type?>">
                             <input type="text" class="input" id="email" name="email" required autocomplete="off">
                             <label for="email">Email Hoặc MSV</label>
                         </div>
 
 
                         <div class="input-field">
-                            <button type="submit" id="forgot" class="btn btn-primary btn-default font-weight-bold">Đăng nhập</button>
+                            <button type="submit" id="submit" class="btn btn-primary btn-default font-weight-bold">Đăng nhập</button>
 
                         </div>
 
@@ -45,26 +45,6 @@ require_once('../../includes/head.php');
         </div>
     </div>
     </form>
-    <script type="text/javascript">
-$("#forgot").on("click", function() {
-
-    $('#forgot').html('<i class="fa fa-spinner fa-spin"></i> Đang Xử Lý').prop('disabled',
-        true);
-    $.ajax({
-        url: "<?=$duogxaolin->home_url();?>/ajaxs/forgot.php",
-        method: "POST",
-        data: {
-            email: $("#email").val()
-        },
-        success: function(response) {
-            $("#thongbao").html(response);
-            $('#forgot').html(
-                    'Xác nhận')
-                .prop('disabled', false);
-        }
-    });
-});
-</script>
     <?php
     require_once('../../includes/foot.php');
     ?>

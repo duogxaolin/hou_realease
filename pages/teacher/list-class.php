@@ -74,6 +74,12 @@ require_once('../../includes/navbar.php');
                                        <i class="fas fa-edit"></i>
                                       <span>Quản lý</span>
                                         </a>
+                                      </span>
+                                      <span class="dtr-data">
+                                        <a type="button" href="<?=$duogxaolin->home_url()?>/teacher/mail/class/<?=$row['course']?>-<?=$row['class_id']?>" class="btn btn-success">
+                                       <i class="fas fa-edit"></i>
+                                      <span>Gửi Email</span>
+                                        </a>
                                       </span></td>
                                 </tr>
                         <?php } ?>

@@ -14,7 +14,9 @@
         $password = (check_string($_POST['password']));
         if(empty($username))
         {
-            admin_msg_error2("Vui lòng nhập tên đăng nhập !");
+            $return['error'] = 1;
+            $return['msg']   = 'Vui lòng nhập tên đăng nhập ! ';
+            die(json_encode($return));
         }
         if(check_email($username) == True){
             $type = 'email';
@@ -26,19 +28,27 @@
       //  admin_msg_error2($type);
             if(!$duogxaolin->get_row(" SELECT * FROM `users` WHERE `$type` = '$username'"))
             {
-                admin_msg_error2('Tên đăng nhập không tồn tại');
+                $return['error'] = 1;
+                $return['msg']   = 'Tên đăng nhập không tồn tại ';
+                die(json_encode($return));
             }
             if(empty($password))
             {
-                admin_msg_error2("Vui lòng nhập mật khẩu !");
+                $return['error'] = 1;
+                $return['msg']   = 'Vui lòng nhập mật khẩu ! ';
+                die(json_encode($return));
             }
             if(!$row = $duogxaolin->get_row(" SELECT * FROM `users` WHERE `$type` = '$username' AND `password` = '$password' "))
             {
-                admin_msg_error2('Mật khẩu đăng nhập không chính xác');
+                $return['error'] = 1;
+                $return['msg']   = 'Mật khẩu đăng nhập không chính xác';
+                die(json_encode($return));
             }
             if($row['banned'] != 0)
             {
-                admin_msg_error2('Tài khoản này đã bị khóa bởi BQT lý do: '.$row['reason_banned']);
+                $return['error'] = 1;
+                $return['msg']   = $row['reason_banned'];
+                die(json_encode($return));
             }
             $duogxaolin->update("users", [
                 'otp'       => NULL,
@@ -59,7 +69,11 @@
             </div>';
             sendCSM($guitoi, $hoten, $subject, $noi_dung, $bcc,$domain);   
             $_SESSION['username'] = $row['username'];
-            admin_msg_success('Đăng nhập thành công ', $duogxaolin->home_url(), 0);
+            $_SESSION['type']  = 'users';
+            $return['href'] = $duogxaolin->home_url();
+            $return['msg']   = 'Đăng nhập thành công ';
+            die(json_encode($return));
+
         }
 
         if($_POST['type'] == 'Admin' )
@@ -68,7 +82,9 @@
             $password = (check_string($_POST['password']));
             if(empty($username))
             {
-                admin_msg_error2("Vui lòng nhập tên đăng nhập !");
+                $return['error'] = 1;
+                $return['msg']   = 'Vui lòng nhập tên đăng nhập ! ';
+                die(json_encode($return));
             }
             if(check_email($username) == True){
                 $type = 'email';
@@ -80,19 +96,27 @@
           //  admin_msg_error2($type);
                 if(!$duogxaolin->get_row(" SELECT * FROM `admin` WHERE `$type` = '$username'"))
                 {
-                    admin_msg_error2('Tên đăng nhập không tồn tại');
+                    $return['error'] = 1;
+                    $return['msg']   = 'Tên đăng nhập không tồn tại ';
+                    die(json_encode($return));
                 }
                 if(empty($password))
                 {
-                    admin_msg_error2("Vui lòng nhập mật khẩu !");
+                    $return['error'] = 1;
+                    $return['msg']   = 'Vui lòng nhập mật khẩu ! ';
+                    die(json_encode($return));
                 }
                 if(!$row = $duogxaolin->get_row(" SELECT * FROM `admin` WHERE `$type` = '$username' AND `password` = '$password' "))
                 {
-                    admin_msg_error2('Mật khẩu đăng nhập không chính xác');
+                    $return['error'] = 1;
+                    $return['msg']   = 'Mật khẩu đăng nhập không chính xác';
+                    die(json_encode($return));
                 }
                 if($row['banned'] != 0)
                 {
-                    admin_msg_error2('Tài khoản này đã bị khóa bởi BQT lý do: '.$row['reason_banned']);
+                    $return['error'] = 1;
+                    $return['msg']   = $row['reason_banned'];
+                    die(json_encode($return));
                 }
                 $duogxaolin->update("admin", [
                     'otp'       => NULL,
@@ -113,6 +137,9 @@
                 </div>';
                 sendCSM($guitoi, $hoten, $subject, $noi_dung, $bcc,$domain);   
                 $_SESSION['teacher'] = $row['username'];
-                admin_msg_success('Đăng nhập thành công !!', $duogxaolin->home_url(), 0);
+                $_SESSION['type']   = 'admin';
+                $return['href'] = $duogxaolin->home_url();
+                $return['msg']   = 'Đăng nhập thành công ';
+                die(json_encode($return));
             }
 ?>
