@@ -22,7 +22,7 @@ if (isset($_SESSION['teacher']) and isset($_POST['btnCreate'])) {
     $subject = $title;
     $bcc = 'DUOGXAOLIN.DEV';
     $noi_dung = '<div id=":n5" class="a3s aiL ">
-    <p><strong>Xin chào : </strong> '.$row['fullname'].' </p>
+    <p><strong>Xin chào : </strong> '.$rows['fullname'].' </p>
     <br>'.$content.'<br>
     <p>Tmas - Hệ Thống Quản Lý Đào Tạo</p>
     </div>';

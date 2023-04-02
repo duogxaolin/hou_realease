@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 01, 2023 lúc 03:23 AM
+-- Thời gian đã tạo: Th4 02, 2023 lúc 08:51 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -429,8 +429,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`, `course`, `class`, `birth`, `sex`, `cccd`) VALUES
-(1, '21a120100061', '123456789', 'leader', 0, '2023-03-07', '21a120100061@students.hou.edu.vn', '', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', 'x61z2iwahkqboptuv8y5rd0cm4lne93f1680259743', '::1', '', '0354186573', 'Nguyễn Thái Dương', 'K24', 'DT3', '2003-09-30', 'Nam', ''),
-(2, '21a120100049', '12345678', '', 0, NULL, '21a120100049@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Nguyễn Văn Dũng', 'K24', 'DT3', '0000-00-00', '', ''),
+(1, '21a120100061', '123456789', 'leader', 1, '2023-03-07', '21a120100061@students.hou.edu.vn', 'DCM Đóng học phí đi', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', 'x61z2iwahkqboptuv8y5rd0cm4lne93f1680259743', '::1', '', '0354186573', 'Nguyễn Thái Dương', 'K24', 'DT3', '2003-09-30', 'Nam', ''),
+(2, '21a120100049', '12345678', 'leader', 0, NULL, '21a120100049@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Nguyễn Văn Dũng', 'K24', 'DT3', '0000-00-00', '', ''),
 (3, '21a120100302', '12345678', '', 0, NULL, '21a120100302@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Trần Văn Tuấn', '', '', '0000-00-00', '', '');
 
 --
