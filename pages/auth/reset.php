@@ -36,11 +36,11 @@
 
 <body>
 <form submit-ajax="duogxaolin" action="<?=$duogxaolin->home_url();?>/ajaxs/reset.php" method="post" class="mt-4">
-    <input type="hidden" class="form-control" id="username"
+    <input type="hidden" name="username" id="username"
                                                     value="<?= $username ?>">
-   <input type="hidden" class="form-control" id="type"
+   <input type="hidden" class="form-control" id="type" name="type"
                                                     value="<?= $type ?>">
-                                  <input type="hidden" class="form-control" id="otp"
+                                  <input type="hidden" class="form-control" id="otp" name="otp"
                                                     value="<?= $code ?>">
     <div class="wrapper">
         <div class="container main-login">
@@ -57,6 +57,7 @@
                     <div class="input-box">
                         <h2>Đăng Nhập</h2>
                         <div class="input-field">
+                        
                         <input type="text" class="input"
                                                    name="password" 
                                                    id="password"/>

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 02, 2023 lúc 08:51 AM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.2.0
+-- Máy chủ: localhost:3306
+-- Thời gian đã tạo: Th4 02, 2023 lúc 02:23 PM
+-- Phiên bản máy phục vụ: 5.7.33-cll-lve
+-- Phiên bản PHP: 7.3.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `hou`
+-- Cơ sở dữ liệu: `phovietg_db`
 --
 
 -- --------------------------------------------------------
@@ -32,12 +33,12 @@ CREATE TABLE `admin` (
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `level` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-  `banned` int(11) NOT NULL DEFAULT 0,
+  `banned` int(11) NOT NULL DEFAULT '0',
   `createdate` date DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-  `reason_banned` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-  `agent_id` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-  `php` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `reason_banned` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+  `agent_id` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+  `php` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
   `otp` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `ip` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
@@ -52,9 +53,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`, `birth`, `sex`) VALUES
-(1, '21a120100061', '19008198', 'leader', 0, '2023-03-07', '21a120100061@students.hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', '', '::1', '', '0354186573', 'Nguyễn Thái Dương', '2003-09-30', 'Nam'),
-(2, '21a120100049', '12345678', '', 0, NULL, '21a120100049@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Nguyễn Văn Dũng', '0000-00-00', ''),
-(3, '21a120100302', '12345678', '', 0, NULL, '21a120100302@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Trần Văn Tuấn', '0000-00-00', '');
+(1, '21a120100061', '12345678', 'leader', 0, '2023-03-07', 'uyenntt@hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', '7jlkb36quigi8dumpj3iu2kr1l', '', '2401:d800:dc21:a2cb:d4df:97e7:f3ad:8021, 2401:d800:dc21:a2cb:d4df:97e7:f3ad:8021', '', '012345678', 'Nguyễn Thị Tố Uyên', '2003-09-30', 'Female');
 
 -- --------------------------------------------------------
 
@@ -64,15 +63,15 @@ INSERT INTO `admin` (`id`, `username`, `password`, `level`, `banned`, `createdat
 
 CREATE TABLE `blogs` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_vietnamese_ci,
   `time` datetime DEFAULT NULL,
-  `thoigian` varchar(255) DEFAULT NULL,
+  `thoigian` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `view` int(11) DEFAULT NULL,
-  `img` varchar(255) DEFAULT NULL,
-  `display` varchar(255) DEFAULT NULL,
-  `domain` text NOT NULL,
-  `slug` text NOT NULL
+  `img` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `display` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `domain` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `slug` text COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
 --
@@ -134,12 +133,12 @@ INSERT INTO `course` (`id`, `name`, `course_id`, `start`, `end`) VALUES
 
 CREATE TABLE `mail` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_vietnamese_ci,
   `time` datetime DEFAULT NULL,
-  `thoigian` varchar(255) DEFAULT NULL,
-  `student` text NOT NULL,
-  `teacher` text NOT NULL
+  `thoigian` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `student` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `teacher` text COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
 --
@@ -169,10 +168,10 @@ INSERT INTO `mail` (`id`, `title`, `content`, `time`, `thoigian`, `student`, `te
 
 CREATE TABLE `notification` (
   `id` int(11) NOT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `content` longtext DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8_vietnamese_ci,
   `time` datetime DEFAULT NULL,
-  `thoigian` varchar(255) DEFAULT NULL
+  `thoigian` varchar(255) COLLATE utf8_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci ROW_FORMAT=DYNAMIC;
 
 --
@@ -406,12 +405,12 @@ CREATE TABLE `users` (
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `level` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-  `banned` int(11) NOT NULL DEFAULT 0,
+  `banned` int(11) NOT NULL DEFAULT '0',
   `createdate` date DEFAULT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
-  `reason_banned` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-  `agent_id` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
-  `php` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `reason_banned` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+  `agent_id` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
+  `php` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci,
   `otp` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `ip` text CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `time` varchar(255) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
@@ -429,9 +428,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`, `course`, `class`, `birth`, `sex`, `cccd`) VALUES
-(1, '21a120100061', '123456789', 'leader', 1, '2023-03-07', '21a120100061@students.hou.edu.vn', 'DCM Đóng học phí đi', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', 'x61z2iwahkqboptuv8y5rd0cm4lne93f1680259743', '::1', '', '0354186573', 'Nguyễn Thái Dương', 'K24', 'DT3', '2003-09-30', 'Nam', ''),
-(2, '21a120100049', '12345678', 'leader', 0, NULL, '21a120100049@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Nguyễn Văn Dũng', 'K24', 'DT3', '0000-00-00', '', ''),
-(3, '21a120100302', '12345678', '', 0, NULL, '21a120100302@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '', 'Trần Văn Tuấn', '', '', '0000-00-00', '', '');
+(1, '21a120100061', '123456789', 'leader', 1, '2023-03-07', '21a120100061@students.hou.edu.vn', 'DCM Đóng học phí đi', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', 'fkku4csn0bv4jedo1n1uigf3h7', 'x61z2iwahkqboptuv8y5rd0cm4lne93f1680259743', '::1', '', '0354186573', 'Nguyễn Thái Dương', 'K24', 'DT3', '2003-09-30', 'Male', ''),
+(2, '21a120100049', '12345678', 'leader', 0, NULL, '21a120100049@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '0213439494', 'Nguyễn Văn Dũng', 'K24', 'DT3', '2003-01-01', 'Female', ''),
+(3, '21a120100302', '12345678', '', 0, NULL, '21a120100302@students.hou.edu.vn', NULL, NULL, NULL, '', '', '', '0912345678', 'Trần Văn Tuấn', 'K24', 'DT3', '2003-01-02', 'Male', '');
 
 --
 -- Chỉ mục cho các bảng đã đổ

@@ -176,7 +176,7 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome!</h6>
                 </div>
-                <a href="<?=$duogxaolin->home_url()?>/student/profile" class="dropdown-item">
+                <a href="<?=$duogxaolin->home_url()?>/teacher/profile" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>My profile</span>
                 </a>

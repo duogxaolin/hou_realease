@@ -36,6 +36,7 @@ RewriteRule ^leader/view/([A-Za-z0-9-]+)$ pages/leader/view.php?usn=$1 [L]
 
 #teacher
 RewriteRule ^teacher/class/list$ pages/teacher/list-class.php [L]
+RewriteRule ^teacher/profile$ pages/teacher/profile.php [L]
 RewriteRule ^teacher/finds$ pages/teacher/finds.php [L]
 RewriteRule ^teacher/createBlogs$ pages/teacher/blogs.php [L]
 RewriteRule ^teacher/view/student/([A-Za-z0-9-]+)$ pages/teacher/students.php?username=$1 [L]
