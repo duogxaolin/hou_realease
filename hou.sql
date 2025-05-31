@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `phovietg_db`
---
 
 -- --------------------------------------------------------
 
@@ -53,7 +51,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `level`, `banned`, `createdate`, `email`, `reason_banned`, `agent_id`, `php`, `otp`, `ip`, `time`, `phone`, `fullname`, `birth`, `sex`) VALUES
-(1, '21a120100061', '12345678', 'leader', 0, '2023-03-07', 'uyenntt@hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', '7jlkb36quigi8dumpj3iu2kr1l', '', '2401:d800:dc21:a2cb:d4df:97e7:f3ad:8021, 2401:d800:dc21:a2cb:d4df:97e7:f3ad:8021', '', '012345678', 'Nguyễn Thị Tố Uyên', '2003-09-30', 'Female');
+(1, '21a120100061', '12345678', 'leader', 0, '2023-03-07', 'uyenntt@hou.edu.vn', NULL, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36', '7jlkb36quigi8dumpj3iu2kr1l', '', '2401:d800:dc21:a2cb:d4df:97e7:f3ad:8021, 2401:d800:dc21:a2cb:d4df:97e7:f3ad:8021', '', '0123456789', 'Nguyễn Thị Tố Uyên', '2003-09-30', 'Female');
 
 -- --------------------------------------------------------
 
